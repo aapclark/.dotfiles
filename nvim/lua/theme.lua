@@ -1,0 +1,2 @@
+-- Theme
+require('nord').set()
