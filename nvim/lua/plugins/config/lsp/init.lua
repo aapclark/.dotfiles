@@ -16,7 +16,7 @@ local on_attach = function(client)
 
     vim.cmd [[augroup HoverDiagnostics']]
     vim.cmd [[au!]]
-    vim.cmd [[au CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()]]
+    vim.cmd [[au CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })]]
     vim.cmd [[augroup END]]
 end
 
