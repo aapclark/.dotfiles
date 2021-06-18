@@ -1,4 +1,4 @@
-local current_path = (...):gsub("%.init$", "")
+local current_path = (...):gsub('%.init$', '')
 
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
@@ -30,14 +30,14 @@ require('packer').startup(function(use)
     use 'nvim-treesitter/playground'
     use 'kyazdani42/nvim-tree.lua'
     use 'mhinz/vim-startify'
-    use 'sindrets/diffview.nvim'
     use 'kdheepak/lazygit.nvim'
+    use 'steelsojka/pears.nvim'
 end)
 
 -- Plugin config
 require(current_path .. '.config.lsp')
-require(current_path .. ".config.treesitter")
-require(current_path .. ".config.telescope")
-require(current_path .. ".config.lualine")
+require(current_path .. '.config.treesitter')
+require(current_path .. '.config.telescope')
+require(current_path .. '.config.lualine')
 require(current_path .. '.config.nvim-tree')
-require(current_path .. '.config.diffview')
+require(current_path .. '.config.pears')
