@@ -4,7 +4,7 @@ env:
 
 # Font Config
 font:
-  size: 11
+  size: 12
   normal:
     family: SF Mono
     style: Light
