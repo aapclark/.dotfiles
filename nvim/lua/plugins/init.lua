@@ -32,6 +32,12 @@ require('packer').startup(function(use)
     use 'mhinz/vim-startify'
     use 'kdheepak/lazygit.nvim'
     use 'steelsojka/pears.nvim'
+    use {
+      'unisonweb/unison',
+      branch = 'trunk',
+      rtp = 'editor-support/vim'
+
+    }
 end)
 
 -- Plugin config
