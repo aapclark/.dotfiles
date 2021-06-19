@@ -37,5 +37,7 @@ export PATH=$PATH:~/unison/.stack-work/install/x86_64-osx/650644a978093caee0e933
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "/Users/apclark/.ghcup/env" ] && source "/Users/apclark/.ghcup/env" # ghcup-env
 
-alias luamake=/Users/apclark/lua-language-server/3rd/luamake/luamake
-alias nvim=/Users/apclark/nvim-osx64/bin/nvim
+alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
+alias nvim=$HOME/nvim-osx64/bin/nvim
+
+source $HOME/.config/broot/launcher/bash/br
