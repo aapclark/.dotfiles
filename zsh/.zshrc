@@ -33,6 +33,7 @@ autoload -U compinit && compinit -u
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/unison/.stack-work/install/x86_64-osx/650644a978093caee0e933cd3412ccc0852fc2b0bb8341f27327c5f07c2c9ee4/8.10.3/bin/
+export PATH=/Users/apclark/.nimble/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "/Users/apclark/.ghcup/env" ] && source "/Users/apclark/.ghcup/env" # ghcup-env
