@@ -39,6 +39,5 @@ export PATH=/Users/apclark/.nimble/bin:$PATH
 [ -f "/Users/apclark/.ghcup/env" ] && source "/Users/apclark/.ghcup/env" # ghcup-env
 
 alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
-alias nvim=$HOME/nvim-osx64/bin/nvim
 
 source $HOME/.config/broot/launcher/bash/br
