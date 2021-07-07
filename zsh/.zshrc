@@ -3,11 +3,11 @@ fpath+=$HOME/.zsh/pure
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/apclark/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -25,19 +25,20 @@ plugins=(autojump fzf)
 
 # User configuration
 
-[[ -s /Users/apclark/.autojump/etc/profile.d/autojump.sh ]] && source /Users/apclark/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 autoload -U compinit && compinit -u
 
 # Common environment variables
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/unison/.stack-work/install/x86_64-osx/650644a978093caee0e933cd3412ccc0852fc2b0bb8341f27327c5f07c2c9ee4/8.10.3/bin/
-export PATH=/Users/apclark/.nimble/bin:$PATH
+export PATH=~/.nimble/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f "/Users/apclark/.ghcup/env" ] && source "/Users/apclark/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
 
 source $HOME/.config/broot/launcher/bash/br
+
+source /home/aapclark/.config/broot/launcher/bash/br
