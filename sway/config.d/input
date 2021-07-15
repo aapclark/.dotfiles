@@ -10,11 +10,11 @@ input type:touchpad {
       natural_scroll enabled
 }
 
-input type:mouse {
+input type:Mouse {
       natural_scroll enabled
 }
+
 # Read `man 5 sway-input` for more information about this section.
-#
 input type:keyboard {
       xkb_layout "us"
       xkb_options caps:ctrl_modifier

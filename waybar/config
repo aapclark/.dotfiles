@@ -1,0 +1,162 @@
+// Global
+{
+	"layer": "top",
+      	"position": "top",
+	// If height property would be not present, it'd be calculated dynamically
+     "height": 32,
+     "width" : 10,
+
+    	"modules-left": [
+        	"custom/launcher",
+        	"sway/workspaces",
+        	"sway/mode",
+	],
+
+	"modules-center": [
+      	],
+
+    	"modules-right": [
+	        "idle_inhibitor",
+	        "memory",
+	        "cpu",
+	        "pulseaudio",
+	        "battery",
+	        "clock",
+	        "tray",
+	        "custom/power",
+     	],
+
+// Modules
+
+"idle_inhibitor": {
+  "format": "{icon} ",
+  "format-icons":{
+      "activated": "",
+      "deactivated": ""
+   }
+},
+
+"battery": {
+    	"states": {
+      		// "good": 95,
+      		"warning": 30,
+      		"critical": 15
+	},
+    	"format": "{capacity}% {icon}",
+    	"format-charging": "{capacity}% ",
+    	"format-plugged": "{capacity}% ",
+    	 // "format-good": "", // An empty format will hide the module
+    	// "format-full": "",
+    	"format-icons": ["", "", "", "", ""]
+},
+
+
+"clock": {
+      	"interval": 10,
+      	"format-alt": "{:%e %b %Y}", // Icon: calendar-alt
+      	"format": "{:%H:%M}",
+      	"tooltip-format": "{:%e %B %Y}"
+},
+
+"cpu": {
+        "interval": 5,
+        "format": "  {usage}%", // Icon: microchip
+        "states": {
+        "warning": 70,
+        "critical": 90,
+        },
+        "on-click": "alacritty -e 'htop'",
+},
+
+"memory": {
+        "interval": 5,
+        "format": " {}%", // Icon: memory
+        "on-click": "alacritty -e 'htop'",
+        "states": {
+            	"warning": 70,
+            	"critical": 90
+        }
+},
+
+"sway/mode": {
+     	"format": "{}",
+        "tooltip": false
+},
+
+"sway/window": {
+        "format": "{}",
+        "max-length": 120
+},
+
+"sway/workspaces": {
+         "disable-scroll": true,
+         "disable-markup" : false,
+         "all-outputs": true,
+         "format": "  {icon}  ",
+         //"format":"{icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+          }
+     },
+"pulseaudio": {
+    	"scroll-step": 1, // %, can be a float
+    	"format": "{volume}% {icon}",
+    	"format-bluetooth": "{volume}% {icon}  {format_source}",
+    	"format-bluetooth-muted": " {icon}  {format_source}",
+    	"format-muted": "婢 {format_source}",
+    	"format-source": "{volume}% ",
+    	"format-source-muted": "",
+    	"format-icons": {
+      		"headphone": "",
+      		"hands-free": "וֹ",
+      		"headset": "  ",
+      		"phone": "",
+      		"portable": "",
+      		"car": "",
+      		"default": [""]
+	},
+    	"on-click": "pavucontrol",
+    	"on-scroll-up": "pamixer -ui 2",
+    	"on-scroll-down": "pamixer -ud 2",
+},
+
+"tray": {
+       	"icon-size": 18,
+       	"spacing":10,
+ },
+
+"custom/firefox": {
+    	"format": " ",
+    	"on-click": "exec firefox",
+    	"tooltip": false
+},
+
+"custom/terminal": {
+    	"format": " ",
+    	"on-click": "exec alacritty",
+    	"tooltip": false
+},
+
+"custom/files": {
+    	"format": " ",
+    	"on-click": "exec thunar",
+    	"tooltip": false
+},
+
+"custom/launcher": {
+    	"format":" ",
+    	"on-click": "exec wofi -c ~/.config/wofi/config -I",
+    	"tooltip": false,
+},
+
+"custom/power": {
+    	"format":"⏻",
+    	"on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
+    	"tooltip": false,
+    	},
+
+}
+
