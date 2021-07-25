@@ -42,3 +42,4 @@ alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
 source $HOME/.config/broot/launcher/bash/br
 
 source /home/aapclark/.config/broot/launcher/bash/br
+export GPG_TTY=$(tty)

@@ -18,5 +18,6 @@ require "nvim-treesitter.configs".setup {
     -- "tsx",
     "typescript",
 },
-  highlight = {enable = true}
+  highlight = {enable = true},
+  autopairs = { enable = true}
 }

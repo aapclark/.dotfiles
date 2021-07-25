@@ -11,14 +11,32 @@ font-size=20
 # Ring
 indicator-radius=115
 # line-uses-ring
-line-color=#3b4252
-text-color=#d8dee9
-inside-color=#2e344098
-inside-ver-color=#5e81ac
-line-ver-color=#5e81ac
-ring-ver-color=#5e81ac98
-ring-color=#4c566a
-key-hl-color=#5e81ac
-separator-color=#4c566a
-layout-text-color=#eceff4
-line-wrong-color=#d08770
+line-color=#3B4252
+text-color=#3B4252
+# inside-color=#8FBCBB
+inside-ver-color=#EBCB8B
+line-ver-color=#88C0D0
+ring-ver-color=#D08770
+ring-color=#8FBCBB
+key-hl-color=#E5E9F0
+separator-color=#3B4252
+layout-text-color=#D08770
+line-wrong-color=#EBCB8B
+
+
+# @define-color p1 #2E3440 ;
+# @define-color p2 #3B4252 ;
+# @define-color p3 #434C5E ;
+# @define-color p4 #4C566A ;
+# @define-color s1 #D8DEE9 ;
+# @define-color s2 #E5E9F0 ;
+# @define-color s3 #ECEFF4 ;
+# @define-color n1 #8FBCBB ;
+# @define-color n2 #88C0D0 ;
+# @define-color n3 #81A1C1 ;
+# @define-color n4 #5E81AC ;
+# @define-color a1 #BF616A ;
+# @define-color a2 #D08770 ;
+# @define-color a3 #EBCB8B ;
+# @define-color a4 #A3BE8C ;
+# @define-color a5 #B48EAD ;

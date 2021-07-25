@@ -1,12 +1,24 @@
 {
   output eDP-1 disable
-  output "Unknown HP 24ea 3CM9200R68" mode 1920x1080@60Hz position 0,0 transform 90
+  output "3CM9200R68" mode 1920x1080@60Hz position 0,0 transform 90
+  output "LCLMTF055432" mode 3440x1440@60Hz position 1080,300
+}
+
+{
+  output eDP-1 disable
+  output DP-2 mode 1920x1080@60Hz position 0,0 transform 90
   output "Unknown ASUS VG34V LCLMTF055432" mode 3440x1440@60Hz position 1080,300
 }
 
 {
   output eDP-1 disable
   output DP-2 mode 1920x1080@60Hz position 0,0 transform 90
+  output DP-4 mode 3440x1440@60Hz position 1080,300
+}
+
+{
+  output eDP-1 disable
+  output DP-1 mode 1920x1080@60Hz position 0,0 transform 90
   output DP-4 mode 3440x1440@60Hz position 1080,300
 }
 

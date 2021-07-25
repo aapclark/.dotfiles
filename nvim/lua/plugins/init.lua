@@ -31,7 +31,7 @@ require('packer').startup(function(use)
     use 'kyazdani42/nvim-tree.lua'
     use 'mhinz/vim-startify'
     use 'kdheepak/lazygit.nvim'
-    use 'steelsojka/pears.nvim'
+    use 'windwp/nvim-autopairs'
     use {
       'unisonweb/unison',
       branch = 'trunk',
@@ -46,4 +46,4 @@ require(current_path .. '.config.treesitter')
 require(current_path .. '.config.telescope')
 require(current_path .. '.config.lualine')
 require(current_path .. '.config.nvim-tree')
-require(current_path .. '.config.pears')
+require(current_path .. '.config.autopairs')
