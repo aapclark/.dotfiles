@@ -12,6 +12,7 @@ require('packer').startup(function(use)
     use 'bfredl/nvim-luadev'
     use 'hrsh7th/nvim-compe'
     use 'mhartington/formatter.nvim'
+    use 'nvim-lua/plenary.nvim'
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -25,7 +26,9 @@ require('packer').startup(function(use)
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
     use {
-        'nvim-treesitter/nvim-treesitter'
+        'nvim-treesitter/nvim-treesitter',
+        branch = '0.5-compat',
+        run = ':TSUpdate'
     }
     use 'nvim-treesitter/playground'
     use 'kyazdani42/nvim-tree.lua'
@@ -36,8 +39,14 @@ require('packer').startup(function(use)
       'unisonweb/unison',
       branch = 'trunk',
       rtp = 'editor-support/vim'
-
     }
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      }
+    }
+    use { 'kristijanhusak/orgmode.nvim' }
 end)
 
 -- Plugin config
@@ -47,3 +56,5 @@ require(current_path .. '.config.telescope')
 require(current_path .. '.config.lualine')
 require(current_path .. '.config.nvim-tree')
 require(current_path .. '.config.autopairs')
+require(current_path .. '.config.gitsigns')
+require(current_path .. '.config.orgmode')

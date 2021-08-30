@@ -72,7 +72,7 @@ window:
     columns: 120
     lines: 60
   padding:
-    x: 2
+    x: 0
     y: 0
   decorations: None
   startup_mode: Windowed

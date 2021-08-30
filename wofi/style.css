@@ -53,10 +53,3 @@ window {
   padding: 5px;
   color: @s1;
 }
-
-#entry:selected {
-    background-color: @n4;
-}
-
-#text:selected {
-}

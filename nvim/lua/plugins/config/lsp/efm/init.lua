@@ -13,7 +13,7 @@ local lsp = require "lspconfig"
 
 -- Set some reasonable defaults for prettier
 local format_options_prettier = {
-    tabWidth = 4,
+    tabWidth = 2,
     singleQuote = true,
     trailingComma = "all",
     arrowParens = "avoid",

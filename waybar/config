@@ -41,15 +41,15 @@
       		"critical": 15
 	},
     	"format": "{capacity}% b",
-    	"format-charging": "{capacity}% bc",
-    	"format-plugged": "{capacity}% bp",
+    	"format-charging": "{capacity}% ++",
+    	"format-plugged": "{capacity}% ac",
 },
 
 "clock": {
       	"interval": 10,
-      	"format-alt": "{:%e %m %Y}",
+      	"format-alt": "{:%Y.%m.%e}",
       	"format": "{:%H:%M}",
-      	"tooltip-format": "{:%e %m %Y}"
+        "tooltip": false
 },
 
 "cpu": {

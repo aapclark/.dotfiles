@@ -21,12 +21,13 @@
 
 @keyframes blink-warning {
     70% {
-        color: @n1;
+        color: @p1;
     }
 
     to {
-        color: @n1;
-        background-color: @a2;
+        color: @p1;
+        background-color: @a1;
+        opacity: 0.40;
     }
 }
 
@@ -38,6 +39,7 @@
     to {
         color: @n1;
         background-color: @a1;
+        opacity: 0.40;
     }
 }
 
@@ -110,12 +112,12 @@
 
 #battery.warning.discharging {
         animation-name: blink-warning;
-        animation-duration: 3s;
+        animation-duration: 8s;
 }
 
 #battery.critical.discharging {
         animation-name: blink-critical;
-        animation-duration: 2s;
+        animation-duration: 5s;
 }
 
 #cpu{

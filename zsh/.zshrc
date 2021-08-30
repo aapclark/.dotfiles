@@ -32,7 +32,8 @@ autoload -U compinit && compinit -u
 # Common environment variables
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=~/.nimble/bin:$PATH
+export PATH=$PATH:~/.nimble/bin
+export PATH=$PATH:~/.local/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env

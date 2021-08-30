@@ -25,7 +25,7 @@ Nord Theme
 }
 
 #window {
-	  border: 1px solid @p4;
+	  border: 2px solid @p4;
     margin: 0px 5px 0px 5px;
 
 }
@@ -49,9 +49,3 @@ Nord Theme
   color: @s1;
 }
 
-#entry:selected {
-    background-color: @n4;
-}
-
-#text:selected {
-}
