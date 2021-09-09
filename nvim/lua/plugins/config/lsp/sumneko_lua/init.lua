@@ -3,8 +3,8 @@ USER = vim.fn.expand('$USER')
 
 local M = {}
 
-local sumneko_root_path = '/Users/' .. USER .. "/lua-language-server"
-local sumneko_binary = '/Users/' .. USER .. "/lua-language-server/bin/MacOS/lua-language-server"
+local sumneko_root_path = '/home/' .. USER .. "/lua-language-server"
+local sumneko_binary = '/home/' .. USER .. "/lua-language-server/bin/Linux/lua-language-server"
 
 local function get_lua_runtime()
     local result = {}

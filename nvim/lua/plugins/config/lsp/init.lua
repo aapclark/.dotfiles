@@ -1,11 +1,11 @@
 local current_path = (...):gsub("%.init$", "")
 local lsp_status = require "lsp-status"
 
-local completion = require "completion"
+-- local completion = require "cmp"
 
 -- Shared on_attach configuration
 local on_attach = function(client)
-    completion.on_attach(client)
+    -- completion.on_attach(client)
 
     if client.resolved_capabilities.document_formatting then
         vim.cmd [[augroup Format]]

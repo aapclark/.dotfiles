@@ -8,9 +8,14 @@ require('packer').startup(function(use)
     use 'b3nj5m1n/kommentary'
     use 'nvim-lua/lsp-status.nvim'
     use 'neovim/nvim-lspconfig'
-    use 'nvim-lua/completion-nvim'
     use 'bfredl/nvim-luadev'
-    use 'hrsh7th/nvim-compe'
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+          'hrsh7th/vim-vsnip',
+          'hrsh7th/cmp-buffer',
+        }
+      }
     use 'mhartington/formatter.nvim'
     use 'nvim-lua/plenary.nvim'
     use {
@@ -58,3 +63,5 @@ require(current_path .. '.config.nvim-tree')
 require(current_path .. '.config.autopairs')
 require(current_path .. '.config.gitsigns')
 require(current_path .. '.config.orgmode')
+require(current_path .. '.config.nvim-cmp')
+

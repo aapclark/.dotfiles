@@ -11,5 +11,11 @@
 }
 
 {
+  output eDP-1 disable
+  output DP-2 mode 1920x1080@60Hz position 0,0 transform 90
+  output DP-5 mode 3440x1440@60Hz position 1080,120
+}
+
+{
   output eDP-1 enable mode 1920x1080@60Hz
 }
