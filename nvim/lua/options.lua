@@ -29,7 +29,7 @@ opt('o', 'wildignore', '.git,*/node_modules/*,*/target/*,.metals,.bloop')
 opt('o', 'ignorecase', true)
 opt('o', 'smartcase', true)
 opt('o', 'clipboard', 'unnamed')
-opt('o', 'completeopt', 'menu,menuone,noselect')
+opt('o', 'completeopt', 'menuone,noselect')
 
 -- window-scoped
 opt('w', 'wrap', false)
