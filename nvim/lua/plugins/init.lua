@@ -60,11 +60,10 @@ end)
 -- Plugin config
 require(current_path .. '.config.lsp')
 require(current_path .. '.config.treesitter')
+require(current_path .. '.config.nvim-cmp')
 require(current_path .. '.config.telescope')
 require(current_path .. '.config.lualine')
 require(current_path .. '.config.nvim-tree')
 require(current_path .. '.config.autopairs')
 require(current_path .. '.config.gitsigns')
 require(current_path .. '.config.orgmode')
-require(current_path .. '.config.nvim-cmp')
-
