@@ -7,76 +7,70 @@ env:
 font:
   size: 10
   normal:
-    family: SF Mono
+    family: SF Mono Powerline
     style: Light
   bold:
-    Family: SF Mono
+    family: SF Mono Powerline
     style: Regular
   italic:
-    family: SF Mono
-    style: Light Italic
+    family: SF Mono Powerline
+    style: Italic
   use_thin_strokes: true
   draw_bold_text_with_bright_colors: true
 
 colors:
-  # Default colors
   primary:
-    background: '0x2c2c2c'
-    foreground: '0xd6d6d6'
-
-    dim_foreground:    '0xdbdbdb'
-    bright_foreground: '0xd9d9d9'
-    dim_background:    '0x202020' # not sure
-    bright_background: '0x3a3a3a' # not sure
-
-  # Cursor colors
+    background: '#2e3440'
+    foreground: '#d8dee9'
+    dim_foreground: '#a5abb6'
   cursor:
-    text:   '0x2c2c2c'
-    cursor: '0xd9d9d9'
-
-  # Normal colors
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  vi_mode_cursor:
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  selection:
+    text: CellForeground
+    background: '#4c566a'
+  search:
+    matches:
+      foreground: CellBackground
+      background: '#88c0d0'
+    bar:
+      background: '#434c5e'
+      foreground: '#d8dee9'
   normal:
-    black:   '0x1c1c1c'
-    red:     '0xbc5653'
-    green:   '0x909d63'
-    yellow:  '0xebc17a'
-    blue:    '0x7eaac7'
-    magenta: '0xaa6292'
-    cyan:    '0x86d3ce'
-    white:   '0xcacaca'
-
-  # Bright colors
+    black: '#3b4252'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#88c0d0'
+    white: '#e5e9f0'
   bright:
-    black:   '0x636363'
-    red:     '0xbc5653'
-    green:   '0x909d63'
-    yellow:  '0xebc17a'
-    blue:    '0x7eaac7'
-    magenta: '0xaa6292'
-    cyan:    '0x86d3ce'
-    white:   '0xf7f7f7'
-
-  # Dim colors
+    black: '#4c566a'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#8fbcbb'
+    white: '#eceff4'
   dim:
-    black:   '0x232323'
-    red:     '0x74423f'
-    green:   '0x5e6547'
-    yellow:  '0x8b7653'
-    blue:    '0x556b79'
-    magenta: '0x6e4962'
-    cyan:    '0x5c8482'
-    white:   '0x828282'
+    black: '#373e4d'
+    red: '#94545d'
+    green: '#809575'
+    yellow: '#b29e75'
+    blue: '#68809a'
+    magenta: '#8c738c'
+    cyan: '#6d96a5'
+    white: '#aeb3bb'
 
 window:
-  # Window Dimensions at start
-  dimensions:
-    columns: 120
-    lines: 60
   padding:
-    x: 0
-    y: 0
-  decorations: None
-  startup_mode: Windowed
+    x: 8
+    y: 8
 
 background_opacity: 1.0
 
