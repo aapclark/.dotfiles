@@ -30,10 +30,26 @@ local function buf_option(...)
   vim.api.nvim_buf_set_option(bufnr, ...)
 end
 
+
+local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
+
+local function n_opt(scope, key, value)
+    scopes[scope][key] = value
+    if scope ~= 'o' then scopes['o'][key] = value end
+end
+
+local function n_map(mode, lhs, rhs, opts)
+  local options = {noremap = true}
+  if opts then options = vim.tbl_extend('force', options, opts) end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
 return {
   opt = opt,
   map = map,
   toggle_nums = toggle_nums,
   buf_map = buf_map,
   buf_option = buf_option,
+  n_map = n_map,
+  n_opt = n_opt,
 }
