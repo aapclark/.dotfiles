@@ -69,8 +69,8 @@ colors:
 
 window:
   padding:
-    x: 8
-    y: 8
+    x: 2
+    y: 2
 
 background_opacity: 1.0
 
