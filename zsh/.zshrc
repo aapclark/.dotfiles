@@ -21,9 +21,9 @@ autoload -U compinit && compinit -u
 
 # Common environment variables
 export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/.nimble/bin
-export PATH=$PATH:~/.local/bin
+export PATH=$GOPATH/bin:$PATH
+export PATH=~/.nimble/bin:$PATH
+export PATH=~/.local/bin:$PATH
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
