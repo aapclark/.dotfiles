@@ -72,6 +72,7 @@ require("packer").startup(
             run = ":UpdateRemotePlugins",
             requires = {"vim-test/vim-test"}
         }
+        use {"zah/nim.vim"}
     end
 )
 
