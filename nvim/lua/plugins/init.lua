@@ -8,7 +8,7 @@ require("packer").startup(
         use "junegunn/fzf.vim"
         use "b3nj5m1n/kommentary"
         use "nvim-lua/lsp-status.nvim"
-        use "neovim/nvim-lspconfig"
+        use {"neovim/nvim-lspconfig"}
         use "bfredl/nvim-luadev"
         use {
             "hrsh7th/nvim-cmp",
@@ -20,7 +20,7 @@ require("packer").startup(
         }
         use "saadparwaiz1/cmp_luasnip"
         use "L3MON4D3/LuaSnip"
-        use "mhartington/formatter.nvim"
+        -- use "mhartington/formatter.nvim"
         use "nvim-lua/plenary.nvim"
         use {
             "nvim-telescope/telescope.nvim",
@@ -73,6 +73,19 @@ require("packer").startup(
             requires = {"vim-test/vim-test"}
         }
         use {"zah/nim.vim"}
+        use(
+            {
+                "jose-elias-alvarez/null-ls.nvim",
+                after = "nvim-lspconfig",
+                config = function()
+                    require("config.null-ls")
+                end,
+                requires = {
+                    "nvim-lua/plenary.nvim",
+                    "neovim/nvim-lspconfig"
+                }
+            }
+        )
     end
 )
 

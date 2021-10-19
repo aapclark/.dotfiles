@@ -83,9 +83,3 @@ require(current_path .. ".json").setup {
     on_attach = on_attach,
     capabilities = lsp_status.capabilities
 }
-
--- Linting
-require(current_path .. ".efm").setup {
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities
-}
