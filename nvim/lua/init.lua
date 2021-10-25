@@ -1,8 +1,5 @@
-require('options')
-
-require('plugins')
-
-require('keybindings')
-require('commands')
-require('theme')
-require('utils')
+require("aapclark.plugins")
+require("aapclark.options")
+require("aapclark.keybindings")
+require("aapclark.commands")
+require("aapclark.theme")

@@ -79,14 +79,12 @@
 #pulseaudio,
 #temperature,
 #tray,
-#idle_inhibitor,
 #custom-PBPbattery{
       padding:0.5rem 0.6rem;
       margin: 0px 0.25rem;
 }
 
-#clock,
-#idle_inhibitor {
+#clock {
   color: @n1;
 }
 
@@ -160,12 +158,13 @@
     padding:7;
   }
 
-#network {
-         color: @n1;
+#network,
+#tray {
+    color: @p1;
 }
 
 #network.disconnected {
-        color: @a2;
+    color: @a2;
 }
 
 #pulseaudio{

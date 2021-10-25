@@ -16,7 +16,6 @@
       	],
 
     	"modules-right": [
-	        "idle_inhibitor",
 	        "memory",
 	        "cpu",
 	        "battery",
@@ -25,14 +24,6 @@
 	        "tray",
 	        "custom/power",
      	],
-
-"idle_inhibitor": {
-  "format": "{icon} ",
-  "format-icons":{
-      "activated": "",
-      "deactivated": ""
-   }
-},
 
 "battery": {
     	"states": {
@@ -87,6 +78,7 @@
          "disable-markup" : false,
          "all-outputs": true,
      },
+
 "pulseaudio": {
     	"scroll-step": 1, // %, can be a float
     	"format": "{volume}% v",
