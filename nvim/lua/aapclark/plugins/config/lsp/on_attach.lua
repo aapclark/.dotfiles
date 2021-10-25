@@ -9,6 +9,7 @@ local on_attach = function(client)
 		client.resolved_capabilities.range_formatting = false
 	end
 
+	require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 	client.resolved_capabilities.document_highlighting = false
 
 	vim.cmd([[

@@ -7,17 +7,11 @@ require("packer").startup(function(use)
 	use("junegunn/fzf.vim")
 	use("b3nj5m1n/kommentary")
 	use("nvim-lua/lsp-status.nvim")
-	use({
-		"neovim/nvim-lspconfig",
-		requires = {
-			"jose-elias-alvarez/nvim-lsp-ts-utils",
-		},
-	})
+	use("neovim/nvim-lspconfig")
 	use("bfredl/nvim-luadev")
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {
-			"hrsh7th/vim-vsnip",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp",
 		},
@@ -35,7 +29,7 @@ require("packer").startup(function(use)
 		},
 	})
 	use({
-		"hoob3rt/lualine.nvim",
+		"nvim-lualine/lualine.nvim",
 		requires = {
 			"kyazdani42/nvim-web-devicons",
 			opt = true,
@@ -43,7 +37,6 @@ require("packer").startup(function(use)
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		branch = "0.5-compat",
 		run = ":TSUpdate",
 	})
 	use("nvim-treesitter/playground")
@@ -69,6 +62,7 @@ require("packer").startup(function(use)
 		requires = {
 			"nvim-lua/plenary.nvim",
 			"neovim/nvim-lspconfig",
+			"jose-elias-alvarez/nvim-lsp-ts-utils",
 		},
 	})
 end)

@@ -1,6 +1,5 @@
 local path = (...):gsub("%.init$", "")
 local attach_server = require(path .. ".on_attach").attach_server
-local lsp_status = require("lsp-status")
 
 local diag = vim.lsp.diagnostic.on_publish_diagnostics
 

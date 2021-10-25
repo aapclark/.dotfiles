@@ -1,18 +1,6 @@
-# Node Version Manager Stuff
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-source $ZSH/oh-my-zsh.sh
 
 # Plugins
-plugins=(
-  autojump
-  fzf
-  git
-)
+plugins=(git autojump fzf)
 
 # AutoJump
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
@@ -20,6 +8,11 @@ plugins=(
 autoload -U compinit && compinit -u
 
 # Common environment variables
+# Node Version Manager Stuff
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+export ZSH="$HOME/.oh-my-zsh"
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=~/.nimble/bin:$PATH
@@ -40,3 +33,4 @@ source /home/aapclark/.config/broot/launcher/bash/br
 export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
+source $ZSH/oh-my-zsh.sh
