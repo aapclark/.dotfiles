@@ -18,6 +18,8 @@ export PATH=$GOPATH/bin:$PATH
 export PATH=~/.nimble/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
+export PATH=~/.local/share/coursier/bin:$PATH
+
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

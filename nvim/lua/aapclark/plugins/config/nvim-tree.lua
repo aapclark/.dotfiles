@@ -30,7 +30,6 @@ g.nvim_tree_icons = {
 	},
 }
 
-g.nvim_tree_ignore = { ".git", "node_modules", ".DS_Store" }
 g.nvim_tree_highlight_open_files = 1
 
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
@@ -39,6 +38,7 @@ require("nvim-tree").setup({
 	open_on_setup = false,
 	open_on_tab = false,
 	auto_close = true,
+	ignore = { ".git", "node_modules", ".DS_Store" },
 	mappings = {
 		list = {
 			{ key = { "<CR>", "o", "<2-LeftMouse>" }, cb = tree_cb("edit") },

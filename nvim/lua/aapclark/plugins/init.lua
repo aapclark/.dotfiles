@@ -55,7 +55,7 @@ require("packer").startup(function(use)
 			"nvim-lua/plenary.nvim",
 		},
 	})
-	use({ "kristijanhusak/orgmode.nvim" })
+	-- use({ "kristijanhusak/orgmode.nvim" })
 	use({ "zah/nim.vim" })
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
@@ -76,4 +76,4 @@ config("lualine")
 config("nvim-tree")
 config("autopairs")
 config("gitsigns")
-config("orgmode")
+-- config("orgmode")
