@@ -1,107 +1,98 @@
-// Global
 {
 	"layer": "top",
-      	"position": "top",
-	// If height property would be not present, it'd be calculated dynamically
-     "height": 32,
-     "width" : 10,
+ 	"position": "top",
+  "height": 24,
 
-    	"modules-left": [
-        	"custom/launcher",
-        	"sway/workspaces",
-        	"sway/mode",
+ 	"modules-left": [
+    "custom/launcher",
+    "sway/workspaces",
+    "sway/mode",
 	],
 
-	"modules-center": [
-      	],
-
-    	"modules-right": [
-	        "memory",
-	        "cpu",
-	        "battery",
-	        "pulseaudio",
-	        "clock",
-	        "tray",
-	        "custom/power",
-     	],
+  "modules-right": [
+    "memory",
+    "cpu",
+    "battery",
+    "pulseaudio",
+    "clock",
+    "tray",
+    "custom/power",
+  ],
 
 "battery": {
-    	"states": {
-      		// "good": 95,
-      		"warning": 25,
-      		"critical": 15
-	},
-    	"format": "{capacity}% b",
-    	"format-charging": "{capacity}% ++",
-    	"format-plugged": "{capacity}% ac",
+  "states": {
+    "warning": 25,
+    "critical": 15
+},
+  "format": "{capacity}% b",
+  "format-charging": "{capacity}% ++",
+  "format-plugged": "{capacity}% ac",
 },
 
 "clock": {
-      	"interval": 10,
-      	"format-alt": "{:%Y.%m.%e}",
-      	"format": "{:%H:%M}",
-        "tooltip": false
+  "interval": 10,
+  "format-alt": "{:%Y.%m.%d}",
+  "format": "{:%H:%M}",
+  "tooltip": false
 },
 
 "cpu": {
-        "interval": 5,
-        "format": "{usage}% c",
-        "states": {
-        "warning": 70,
-        "critical": 90,
-        },
-        "on-click": "alacritty -e 'htop'",
+    "interval": 5,
+    "format": "{usage}% c",
+    "states": {
+      "warning": 70,
+      "critical": 90,
+    },
+    "on-click": "alacritty -e 'htop'",
 },
 
 "memory": {
-        "interval": 5,
-        "format": "{}% m",
-        "on-click": "alacritty -e 'htop'",
-        "states": {
-            	"warning": 70,
-            	"critical": 90
-        }
+  "interval": 5,
+  "format": "{}% m",
+  "on-click": "alacritty -e 'htop'",
+  "states": {
+        "warning": 70,
+        "critical": 90
+  }
 },
 
 "sway/mode": {
-     	"format": "{}",
-        "tooltip": false
+	"format": "{}",
+  "tooltip": false
 },
 
 "sway/window": {
-        "format": "{}",
-        "max-length": 120
+  "format": "{}",
+  "max-length": 120
 },
 
 "sway/workspaces": {
-         "disable-scroll": true,
-         "disable-markup" : false,
-         "all-outputs": true,
-     },
+  "disable-scroll": true,
+  "disable-markup" : false,
+  "all-outputs": true,
+},
 
 "pulseaudio": {
-    	"scroll-step": 1, // %, can be a float
-    	"format": "{volume}% v",
-    	"format-bluetooth": "{volume}% v",
-    	"format-bluetooth-muted": "muted",
-    	"format-muted": "muted",
-    	"format-source": "{volume}% v",
-    	"format-source-muted": "muted",
-    	"on-click": "pavucontrol",
-    	"on-scroll-up": "pamixer -ui 1",
-    	"on-scroll-down": "pamixer -ud 1",
+  "scroll-step": 1,
+  "format": "{volume}% v",
+  "format-bluetooth": "{volume}% v",
+  "format-bluetooth-muted": "muted",
+  "format-muted": "muted",
+  "format-source": "{volume}% v",
+  "format-source-muted": "muted",
+  "on-click": "pavucontrol",
+  "on-scroll-up": "pamixer -ui 1",
+  "on-scroll-down": "pamixer -ud 1",
 },
 
 "tray": {
-       	"icon-size": 18,
-       	"spacing":10,
+  "icon-size": 18,
  },
 
 "custom/power": {
-    	"format":"⏻",
-    	"on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
-    	"tooltip": false,
-    	},
-
+ 	"format":"⏻",
+ 	"on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
+ 	"tooltip": false,
+ 	},
 }
 
