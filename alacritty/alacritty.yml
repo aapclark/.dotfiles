@@ -8,10 +8,10 @@ font:
   size: 10
   normal:
     family: SF Mono Powerline
-    style: Light
+    style: Regular
   bold:
     family: SF Mono Powerline
-    style: Regular
+    style: Semibold
   italic:
     family: SF Mono Powerline
     style: Italic
