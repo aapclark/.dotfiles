@@ -2,48 +2,55 @@
 Nord Theme
 */
 
-@define-color p1 #2E3440 ;
-@define-color p2 #3B4252 ;
-@define-color p3 #434C5E ;
-@define-color p4 #4C566A ;
-@define-color s1 #D8DEE9 ;
-@define-color s2 #E5E9F0 ;
-@define-color s3 #ECEFF4 ;
-@define-color n1 #8FBCBB ;
-@define-color n2 #88C0D0 ;
-@define-color n3 #81A1C1 ;
-@define-color n4 #5E81AC ;
-@define-color a1 #BF616A ;
-@define-color a2 #D08770 ;
-@define-color a3 #EBCB8B ;
-@define-color a4 #A3BE8C ;
-@define-color a5 #B48EAD ;
+@define-color p1 #2E3440;
+@define-color p2 #3B4252;
+@define-color p3 #434C5E;
+@define-color p4 #4C566A;
+@define-color s1 #D8DEE9;
+@define-color s2 #E5E9F0;
+@define-color s3 #ECEFF4;
+@define-color n1 #8FBCBB;
+@define-color n2 #88C0D0;
+@define-color n3 #81A1C1;
+@define-color n4 #5E81AC;
+@define-color a1 #BF616A;
+@define-color a2 #D08770;
+@define-color a3 #EBCB8B;
+@define-color a4 #A3BE8C;
+@define-color a5 #B48EAD;
 
-*{
-    font-family: SF Mono;
-    font-size: 12;
+* {
+  font-family: SF Mono;
+  /* font-weight: 200; */
+  font-size: 12.5px;
 }
 
 window {
-	border: 1px solid @p4;
+  border: 1px solid @p4;
 }
 
 #input {
-    margin-bottom: 15px;
-    padding: .5rem;
-    border-radius: 5px;
-    border:none;
-    color: @s1;
+  margin-bottom: 15px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  color: @s1;
 }
 
 #inner-box {
-    background-color: @p2;
+  background-color: @p2;
 }
 
 #outer-box {
-    margin: 5px;
-    padding:15px;
-    background-color: @p2;
+  margin: 5px;
+  padding: 15px;
+  background-color: @p2;
+}
+
+#entry:selected {
+  margin: auto;
+  width: 100%;
+  /* background-color: @a2; */
 }
 
 #scroll {
