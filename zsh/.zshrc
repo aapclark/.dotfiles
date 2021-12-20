@@ -19,6 +19,9 @@ export PATH=~/.nimble/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
 export PATH=~/.local/share/coursier/bin:$PATH
+export DENO_INSTALL=/home/aapclark/.deno
+export PATH=$DENO_INSTALL/bin:$PATH
+# export STARSHIP_CONFIG=~/.config/starship.toml
 
 
 # FZF
