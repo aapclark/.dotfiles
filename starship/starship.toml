@@ -17,21 +17,19 @@ disabled = false
 show_always = true
 
 [directory]
-truncation_length = 8
+truncation_length = 12
 truncation_symbol = "…/"
 
 [git_branch]
-symbol = "🌱 "
+symbol = ""
 truncation_length = 24
 truncation_symbol = "…"
 
-[git_commit]
-commit_hash_length = 4
-tag_symbol = "🔖 "
+[git_status]
+disabled = true
 
 [git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = "[🍒 PICKING](bold red)"
+disabled = true
 
 [nodejs]
 format = "via [nvm $version](bold green) "
