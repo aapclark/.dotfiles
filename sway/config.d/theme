@@ -10,7 +10,7 @@ default_border pixel 2
 
 # Default Font
 # font pango:Noto Sans Regular 10
-font pango:SF Mono Powerline Light 10
+font pango:SF Mono Powerline Regular 10
 
 # Thin borders:
 smart_borders on

@@ -137,10 +137,6 @@
   color: @a1;
 }
 
-#window {
-  font-weight: bold;
-}
-
 #workspaces {
   color: @f1;
   font-size: 12px;
