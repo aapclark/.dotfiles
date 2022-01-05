@@ -3,7 +3,6 @@ local b = null_ls.builtins
 local M = {}
 
 local sources = {
-	-- JS html css stuff
 	b.formatting.prettierd.with({
 		filetypes = {
 			"html",
@@ -32,13 +31,15 @@ local sources = {
 	b.diagnostics.hadolint,
 	-- Prisma
 	b.formatting.prismaFmt,
+	-- Deno
+	--[[ b.formatting.deno_fmt.with({
+		filetypes = { "typescript, javascript" },
+	}), ]]
 }
 
 M.setup = function(lsp_opts)
-	null_ls.config({
+	require("null-ls").setup({
 		sources = sources,
-	})
-	require("lspconfig")["null-ls"].setup({
 		on_attach = function(client)
 			lsp_opts.on_attach(client)
 		end,

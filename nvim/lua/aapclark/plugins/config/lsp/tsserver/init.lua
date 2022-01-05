@@ -1,10 +1,17 @@
 local lsp = require("lspconfig")
+local rd = lsp.util.root_pattern("package.json", "tsconfig.json")
+-- local find_package_json_ancestor = lsp.util.find_package_json_ancestor
 
 local M = {}
 
 function M.setup(lsp_opts)
 	lsp.tsserver.setup({
-		init_options = { documentHighlight = false, publishDiagnostics = true },
+		root_dir = rd,
+		init_options = {
+			documentHighlight = false,
+			publishDiagnostics = true,
+			-- enable = false,
+		},
 		capabilities = lsp_opts.capabilities,
 		commands = {
 			OrganizeImports = {

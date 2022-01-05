@@ -38,6 +38,7 @@ require("nvim-tree").setup({
 	open_on_setup = false,
 	open_on_tab = false,
 	auto_close = true,
+	hijack_cursor = false,
 	ignore = { ".git", "node_modules", ".DS_Store" },
 	mappings = {
 		list = {
