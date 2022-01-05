@@ -13,16 +13,13 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 export ZSH="$HOME/.oh-my-zsh"
-export GOPATH=~/go
-export PATH=$GOPATH/bin:$PATH
 export PATH=~/.nimble/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
 export PATH=~/.local/share/coursier/bin:$PATH
 export DENO_INSTALL=/home/aapclark/.deno
 export PATH=$DENO_INSTALL/bin:$PATH
-# export STARSHIP_CONFIG=~/.config/starship.toml
-
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -31,6 +28,7 @@ export PATH=$DENO_INSTALL/bin:$PATH
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
+alias gv=$HOME/go/bin/g
 
 source $HOME/.config/broot/launcher/bash/br
 
