@@ -3,7 +3,7 @@
 # daemonize
 indicator-caps-lock
 # datestr=%A
-image=$HOME/archlinux.png
+image=$HOME/nord.jpeg
 scaling=fill
 font=SF Mono
 font-size=20
