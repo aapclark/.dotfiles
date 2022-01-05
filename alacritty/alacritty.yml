@@ -69,8 +69,7 @@ colors:
 
 window:
   padding:
-    x: 2
-    y: 2
+    dynamic_padding: true
 
 background_opacity: 1.0
 
