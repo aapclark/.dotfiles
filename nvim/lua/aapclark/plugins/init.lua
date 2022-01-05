@@ -40,10 +40,13 @@ require("packer").startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("nvim-treesitter/playground")
-	use("kyazdani42/nvim-tree.lua")
-	use("mhinz/vim-startify")
+	-- use("kyazdani42/nvim-tree.lua")
+	use({ "goolord/alpha-nvim", requires = {
+		"kyazdani42/nvim-web-devicons",
+	} })
 	use("kdheepak/lazygit.nvim")
 	use("windwp/nvim-autopairs")
+	use("lukas-reineke/indent-blankline.nvim")
 	use({
 		"unisonweb/unison",
 		branch = "trunk",
@@ -73,7 +76,9 @@ config("treesitter")
 config("nvim-cmp")
 config("telescope")
 config("lualine")
-config("nvim-tree")
+-- config("nvim-tree")
 config("autopairs")
 config("gitsigns")
+config("indent-blankline")
+config("alpha-nvim")
 -- config("orgmode")

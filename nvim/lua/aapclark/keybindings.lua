@@ -24,10 +24,10 @@ utils.snnoremap("gf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 utils.snnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 utils.snnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>")
 utils.snnoremap("qf", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-utils.snnoremap("<leader>ll", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
+utils.snnoremap("<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>")
 utils.snnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-utils.snnoremap("]g", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
-utils.snnoremap("[g", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
+utils.snnoremap("]g", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+utils.snnoremap("[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 
 utils.snnoremap("<leader>d", [[<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>]]) -- buffer diagnostics only
 utils.snnoremap("<leader>ln", [[<cmd>lua vim.lsp.diagnostic.get_line_diagnostics()<CR>]])
