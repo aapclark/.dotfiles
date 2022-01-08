@@ -5,7 +5,7 @@ local M = {}
 
 function M.setup(lsp_opts)
 	lsp.denols.setup({
-		root_dir = lsp.util.root_pattern("deno.json", "deno.jsonc", "mod.ts"),
+		root_dir = rd,
 		cmd = { "deno", "lsp" },
 		capabilities = lsp_opts.capabilities,
 		filetypes = {
@@ -13,10 +13,10 @@ function M.setup(lsp_opts)
 			"typescript",
 		},
 		init_options = {
-			lint = false,
+			lint = true,
 			unstable = true,
 			-- enable = lsp.util.root_pattern("deno.json", "deno.jsonc", "mod.ts", "main.ts"),
-			enable = false,
+			enable = true,
 		},
 		on_attach = function(client)
 			if client.config.flags then

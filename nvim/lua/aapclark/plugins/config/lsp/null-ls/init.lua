@@ -1,24 +1,12 @@
 local null_ls = require("null-ls")
 local b = null_ls.builtins
+local lspPath = require("lspconfig.util").path
+local hasPackageJson = require("aapclark.utils").hasPackageJson
+local hasDenoJson = require("aapclark.utils").hasDenoJson
+local cwd = vim.fn.getcwd()
 local M = {}
 
 local sources = {
-	b.formatting.prettierd.with({
-		filetypes = {
-			"html",
-			"json",
-			"markdown",
-			"css",
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"graphql",
-		},
-	}),
-	b.diagnostics.eslint.with({
-		command = "eslint_d",
-	}),
 	-- Lua
 	b.formatting.stylua,
 	b.diagnostics.luacheck.with({
@@ -32,10 +20,32 @@ local sources = {
 	-- Prisma
 	b.formatting.prismaFmt,
 	-- Deno
-	--[[ b.formatting.deno_fmt.with({
-		filetypes = { "typescript, javascript" },
-	}), ]]
 }
+
+if hasPackageJson(cwd) or lspPath.traverse_parents(cwd, hasPackageJson) then
+	sources[#sources + 1] = b.formatting.prettierd.with({
+		filetypes = {
+			"html",
+			"json",
+			"markdown",
+			"css",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"graphql",
+		},
+	})
+	sources[#sources + 1] = b.diagnostics.eslint.with({
+		command = "eslint_d",
+	})
+end
+
+if hasDenoJson(cwd) or lspPath.traverse_parents(cwd, hasDenoJson) then
+	sources[#sources + 1] = b.formatting.deno_fmt.with({
+		filetypes = { "typescript, javascript" },
+	})
+end
 
 M.setup = function(lsp_opts)
 	require("null-ls").setup({

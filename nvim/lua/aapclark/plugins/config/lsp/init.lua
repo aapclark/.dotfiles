@@ -1,5 +1,9 @@
 local path = (...):gsub("%.init$", "")
 local attach_server = require(path .. ".on_attach").attach_server
+local lspPath = require("lspconfig.util").path
+local hasPackageJson = require("aapclark.utils").hasPackageJson
+local hasDenoJson = require("aapclark.utils").hasDenoJson
+local cwd = vim.fn.getcwd()
 
 local diag = vim.lsp.diagnostic.on_publish_diagnostics
 
@@ -11,10 +15,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(diag, {
 	underline = true,
 })
 
-attach_server("tsserver")
+if hasPackageJson(cwd) or lspPath.traverse_parents(cwd, hasPackageJson) then
+	attach_server("tsserver")
+end
 attach_server("go")
 attach_server("rust")
 attach_server("sumneko_lua")
 attach_server("null-ls")
--- attach_server("deno")
+if hasDenoJson(cwd) or lspPath.traverse_parents(cwd, hasDenoJson) then
+	attach_server("deno")
+end
 attach_server("nim")

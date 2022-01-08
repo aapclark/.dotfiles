@@ -1,3 +1,5 @@
+local lspPath = require("lspconfig.util").path
+
 local M = {}
 
 local function map(mode, input, output, options)
@@ -113,6 +115,20 @@ M.attach_server_with = function(on_attach, capabilities)
 			capabilities = capabilities,
 		})
 	end
+end
+
+M.hasFile = function(path, filename)
+	local checkPath = lspPath.join(path, filename)
+	local exists = lspPath.exists(checkPath)
+	return exists
+end
+
+M.hasPackageJson = function(path)
+	return M.hasFile(path, "package.json")
+end
+
+M.hasDenoJson = function(path)
+	return M.hasFile(path, "deno.json")
 end
 
 return M
