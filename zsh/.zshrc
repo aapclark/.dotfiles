@@ -1,6 +1,6 @@
 
 # Plugins
-plugins=(git autojump fzf)
+plugins=(git autojump fzf kubectl)
 
 # AutoJump
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
@@ -12,6 +12,7 @@ autoload -U compinit && compinit -u
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+export EDITOR=nvim
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=~/.nimble/bin:$PATH
 export PATH=~/.local/bin:$PATH
