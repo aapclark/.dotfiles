@@ -1,5 +1,6 @@
 local lsp = require("lspconfig")
 local rd = lsp.util.root_pattern("package.json", "tsconfig.json")
+local vt = require("virtualtypes")
 -- local find_package_json_ancestor = lsp.util.find_package_json_ancestor
 
 local M = {}
@@ -32,6 +33,8 @@ function M.setup(lsp_opts)
 			end
 
 			local ts_utils = require("nvim-lsp-ts-utils")
+
+			vt.on_attach()
 
 			ts_utils.setup({
 				eslint_bin = "eslint_d",

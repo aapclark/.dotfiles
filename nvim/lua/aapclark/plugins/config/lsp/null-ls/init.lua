@@ -20,9 +20,10 @@ local sources = {
 	-- Prisma
 	b.formatting.prismaFmt,
 	-- Deno
+	b.diagnostics.yamllint,
 }
 
-if hasPackageJson(cwd) or lspPath.traverse_parents(cwd, hasPackageJson) then
+if hasPackageJson(cwd) or lspPath.traverse_parents(cwd, hasPackageJson) or not hasDenoJson(cwd) then
 	sources[#sources + 1] = b.formatting.prettierd.with({
 		filetypes = {
 			"html",
@@ -34,8 +35,21 @@ if hasPackageJson(cwd) or lspPath.traverse_parents(cwd, hasPackageJson) then
 			"typescript",
 			"typescriptreact",
 			"graphql",
+			"yaml",
 		},
 	})
+
+	sources[#sources + 1] = b.formatting.prettierd.with({
+		filetypes = {
+			"html",
+			"json",
+			"markdown",
+			"css",
+			"graphql",
+			"yaml",
+		},
+	})
+
 	sources[#sources + 1] = b.diagnostics.eslint.with({
 		command = "eslint_d",
 	})

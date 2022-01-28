@@ -17,6 +17,7 @@ M.setup = function()
 	})
 
 	require("telescope").load_extension("fzy_native")
+	require("telescope").load_extension("file_browser")
 end
 
 return M

@@ -37,8 +37,9 @@ utils.snnoremap("<leader>ln", [[<cmd>lua vim.diagnostic.get()<CR>]])
 -- telescope
 utils.nnoremap("<leader>ff", [[<cmd>lua require'telescope.builtin'.find_files()<CR>]])
 utils.nnoremap("<leader>fg", [[<cmd>lua require'telescope.builtin'.git_files()<CR>]])
--- utils.nnoremap('<leader>lg', [[<cmd>lua require'telescope.builtin'.live_grep()<CR>]])
-utils.nnoremap("<leader>fb", [[<cmd>lua require'telescope.builtin'.file_browser()<CR>]])
+utils.nnoremap("<leader>fi", [[<cmd>lua require'telescope.builtin'.live_grep()<CR>]])
+utils.nnoremap("<leader>fb", [[<cmd>lua require'telescope'.extensions.file_browser.file_browser()<CR>]])
+utils.nnoremap("<leader>tr", [[<cmd>TroubleToggle<CR>]])
 
 -- completion
 utils.iexnoremap("<Enter>", [[v:lua.smart_enter()]])

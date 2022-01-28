@@ -8,6 +8,8 @@ require("packer").startup(function(use)
 	use("b3nj5m1n/kommentary")
 	use("nvim-lua/lsp-status.nvim")
 	use("neovim/nvim-lspconfig")
+	use("folke/trouble.nvim")
+	use("jubnzv/virtual-types.nvim")
 	use("bfredl/nvim-luadev")
 	use({
 		"hrsh7th/nvim-cmp",
@@ -26,6 +28,7 @@ require("packer").startup(function(use)
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzy-native.nvim" },
 			{ "nvim-telescope/telescope-dap.nvim" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
 		},
 	})
 	use({
@@ -81,4 +84,5 @@ config("autopairs")
 config("gitsigns")
 config("indent-blankline")
 config("alpha-nvim")
+config("trouble")
 -- config("orgmode")
