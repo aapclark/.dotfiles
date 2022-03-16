@@ -1,2 +1,1 @@
--- Theme
 require("nord").set()

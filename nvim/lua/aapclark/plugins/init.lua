@@ -13,6 +13,7 @@ require("packer").startup(function(use)
 	use("bfredl/nvim-luadev")
 	use({
 		"hrsh7th/nvim-cmp",
+		branch = "dev",
 		requires = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp",
@@ -43,11 +44,9 @@ require("packer").startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("nvim-treesitter/playground")
-	-- use("kyazdani42/nvim-tree.lua")
 	use({ "goolord/alpha-nvim", requires = {
 		"kyazdani42/nvim-web-devicons",
 	} })
-	use("kdheepak/lazygit.nvim")
 	use("windwp/nvim-autopairs")
 	use("lukas-reineke/indent-blankline.nvim")
 	use({
@@ -71,18 +70,21 @@ require("packer").startup(function(use)
 			"jose-elias-alvarez/nvim-lsp-ts-utils",
 		},
 	})
+	use("mvllow/modes.nvim")
 end)
 
 -- Plugin config
-config("lsp")
+config("nord")
 config("treesitter")
+config("lsp")
 config("nvim-cmp")
 config("telescope")
-config("lualine")
 -- config("nvim-tree")
 config("autopairs")
 config("gitsigns")
 config("indent-blankline")
 config("alpha-nvim")
 config("trouble")
+config("lualine")
+config("modes")
 -- config("orgmode")
