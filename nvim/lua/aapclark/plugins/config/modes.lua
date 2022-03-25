@@ -7,5 +7,5 @@ require("modes").setup({
 	},
 	line_opacity = 0.2,
 	set_cursor = true,
-	focus_only = false,
+	focus_only = true,
 })

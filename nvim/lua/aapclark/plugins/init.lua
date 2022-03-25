@@ -1,5 +1,7 @@
 local config = require("aapclark.utils").config
 
+-- use when plugin repository diverges from local repository
+-- require("packer").init({ git = { subcommands = { update = "pull --rebase=true" } } })
 require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("shaunsingh/nord.nvim")
@@ -60,7 +62,6 @@ require("packer").startup(function(use)
 			"nvim-lua/plenary.nvim",
 		},
 	})
-	-- use({ "kristijanhusak/orgmode.nvim" })
 	use({ "zah/nim.vim" })
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
@@ -79,7 +80,6 @@ config("treesitter")
 config("lsp")
 config("nvim-cmp")
 config("telescope")
--- config("nvim-tree")
 config("autopairs")
 config("gitsigns")
 config("indent-blankline")

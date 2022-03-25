@@ -30,6 +30,8 @@ oopt("ignorecase", true)
 oopt("smartcase", true)
 oopt("clipboard", "unnamed")
 oopt("completeopt", "menuone,noselect")
+oopt("laststatus", 3)
+vim.cmd("highlight WhthSeparator guibg=None")
 
 -- window-scoped
 wopt("wrap", false)
