@@ -6,27 +6,35 @@ Nord Theme
 @define-color p2 #3B4252;
 @define-color p3 #434C5E;
 @define-color p4 #4C566A;
+
 @define-color s1 #D8DEE9;
 @define-color s2 #E5E9F0;
 @define-color s3 #ECEFF4;
+
 @define-color n1 #8FBCBB;
 @define-color n2 #88C0D0;
 @define-color n3 #81A1C1;
 @define-color n4 #5E81AC;
+
 @define-color a1 #BF616A;
 @define-color a2 #D08770;
 @define-color a3 #EBCB8B;
 @define-color a4 #A3BE8C;
 @define-color a5 #B48EAD;
 
+@define-color f1 #8FBCBB;
+@define-color f2 #88C0D0;
+@define-color f3 #81A1C1;
+@define-color f4 #5E81AC;
+
 * {
-  font-family: SF Mono;
-  /* font-weight: 200; */
-  font-size: 12.5px;
+  font-family: SF Mono Powerline Light;
+  font-size: 12px;
 }
 
 window {
-  border: 1px solid @p4;
+  border: 4px double @p4;
+  background: @p1;
 }
 
 #input {
@@ -37,26 +45,39 @@ window {
   color: @s1;
 }
 
-#inner-box {
-  background-color: @p2;
-}
-
 #outer-box {
   margin: 5px;
   padding: 15px;
-  background-color: @p2;
+  background-color: @p1;
+}
+
+#entry {
+  color: @f1;
+  background-color: none;
+  border: none;
+  highlight: none;
 }
 
 #entry:selected {
+  color: @f1;
   margin: auto;
   width: 100%;
-  /* background-color: @a2; */
+  border: none;
+  background: @p4;
+  highlight: none;
 }
 
-#scroll {
+#img:selected {
+  background: @p4;
+  color: @p4;
 }
 
 #text {
   padding: 5px;
   color: @s1;
+}
+
+#text:selected {
+  color: @f1;
+  background-color: @p4;
 }

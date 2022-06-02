@@ -31,7 +31,7 @@
 
 "clock": {
   "interval": 10,
-  "format-alt": "{:%Y.%m.%d}",
+  "format-alt": "{:%d.%m.%Y}",
   "format": "{:%H:%M}",
   "tooltip": false
 },
