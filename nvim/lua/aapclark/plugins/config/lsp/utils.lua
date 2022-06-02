@@ -6,7 +6,7 @@ local utils = {}
 ---@param client table
 function utils.fmt_on_save(client)
 	-- Formatting on save
-	if client.resolved_capabilities.document_formatting then
+	if client.server_capabilities.document_formatting then
 		cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 	end
 end

@@ -21,6 +21,8 @@ local sources = {
 	b.formatting.prismaFmt,
 	-- Deno
 	b.diagnostics.yamllint,
+	-- Go Linter Aggregator
+	b.diagnostics.golangci_lint,
 }
 
 if hasPackageJson(cwd) or lspPath.traverse_parents(cwd, hasPackageJson) or not hasDenoJson(cwd) then
@@ -50,7 +52,7 @@ if hasPackageJson(cwd) or lspPath.traverse_parents(cwd, hasPackageJson) or not h
 		},
 	})
 
-	sources[#sources + 1] = b.diagnostics.eslint.with({
+	sources[#sources + 1] = b.diagnostics.eslint_d.with({
 		command = "eslint_d",
 	})
 end

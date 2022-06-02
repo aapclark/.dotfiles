@@ -11,7 +11,6 @@ utils.nnoremap("<C-K>", [[<C-W><C-K>]])
 utils.nnoremap("<C-L>", [[<C-W><C-L>]])
 
 utils.nnoremap("<leader>hs", ":nohlearch<cr>")
-utils.nnoremap("<leader>xml", ":%!xmllint --format -<cr>")
 utils.nnoremap("<leader>fo", ":copen<cr>")
 utils.nnoremap("<leader>fc", ":cclose<cr>")
 utils.nnoremap("<leader>fn", ":cnext<cr>")
@@ -37,6 +36,7 @@ utils.snnoremap("<leader>ln", [[<cmd>lua vim.diagnostic.get()<CR>]])
 -- telescope
 utils.nnoremap("<leader>ff", [[<cmd>lua require'telescope.builtin'.find_files()<CR>]])
 utils.nnoremap("<leader>fg", [[<cmd>lua require'telescope.builtin'.git_files()<CR>]])
+utils.nnoremap("<leader>fs", [[<cmd>lua require'telescope.builtin'.git_status()<CR>]])
 utils.nnoremap("<leader>fi", [[<cmd>lua require'telescope.builtin'.live_grep()<CR>]])
 utils.nnoremap("<leader>fb", [[<cmd>lua require'telescope'.extensions.file_browser.file_browser()<CR>]])
 utils.nnoremap("<leader>tr", [[<cmd>TroubleToggle<CR>]])
@@ -45,5 +45,5 @@ utils.nnoremap("<leader>tr", [[<cmd>TroubleToggle<CR>]])
 utils.iexnoremap("<Enter>", [[v:lua.smart_enter()]])
 utils.iexnoremap("<Tab>", [[v:lua.smart_tab()]])
 
--- lazygit
-utils.nnoremap("<leader>lg", [[<cmd>lua require'lazygit'.lazygit()<CR>]])
+-- glow
+utils.nnoremap("<leader>gl", ":Glow<CR>")

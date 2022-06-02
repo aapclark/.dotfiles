@@ -1,10 +1,14 @@
 local config = require("aapclark.utils").config
 
 -- use when plugin repository diverges from local repository
--- require("packer").init({ git = { subcommands = { update = "pull --rebase=true" } } })
 require("packer").startup(function(use)
+require("packer").init({
+  git = {
+    clone_timeout = false
+  }
+})
 	use("wbthomason/packer.nvim")
-	use("shaunsingh/nord.nvim")
+  use("rebelot/kanagawa.nvim")
 	use("junegunn/fzf")
 	use("junegunn/fzf.vim")
 	use("b3nj5m1n/kommentary")
@@ -15,7 +19,6 @@ require("packer").startup(function(use)
 	use("bfredl/nvim-luadev")
 	use({
 		"hrsh7th/nvim-cmp",
-		branch = "dev",
 		requires = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp",
@@ -72,10 +75,11 @@ require("packer").startup(function(use)
 		},
 	})
 	use("mvllow/modes.nvim")
+	use({ "ellisonleao/glow.nvim", branch = "main" })
 end)
 
 -- Plugin config
-config("nord")
+config("kanagawa")
 config("treesitter")
 config("lsp")
 config("nvim-cmp")
