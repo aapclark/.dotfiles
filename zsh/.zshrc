@@ -14,6 +14,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export EDITOR=nvim
 export ZSH="$HOME/.oh-my-zsh"
+
 export PATH=~/.nimble/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
@@ -21,6 +22,7 @@ export PATH=~/.local/share/coursier/bin:$PATH
 export DENO_INSTALL=/home/aapclark/.deno
 export PATH=$DENO_INSTALL/bin:$PATH
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+export PATH=~/packages/alacritty/target/release:$PATH
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -38,3 +40,6 @@ export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
 source $ZSH/oh-my-zsh.sh
+
+[[ -s "/home/aapclark/.gvm/scripts/gvm" ]] && source "/home/aapclark/.gvm/scripts/gvm"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
