@@ -2,13 +2,13 @@ local config = require("aapclark.utils").config
 
 -- use when plugin repository diverges from local repository
 require("packer").startup(function(use)
-require("packer").init({
-  git = {
-    clone_timeout = false
-  }
-})
+	require("packer").init({
+		git = {
+			clone_timeout = false,
+		},
+	})
 	use("wbthomason/packer.nvim")
-  use("rebelot/kanagawa.nvim")
+	use("rebelot/kanagawa.nvim")
 	use("junegunn/fzf")
 	use("junegunn/fzf.vim")
 	use("b3nj5m1n/kommentary")
@@ -91,4 +91,3 @@ config("alpha-nvim")
 config("trouble")
 config("lualine")
 config("modes")
--- config("orgmode")

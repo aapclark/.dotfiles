@@ -39,7 +39,21 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "nvim_lsp", keyword_length = 2 },
+		{ name = "luasnip", keyword_length = 2 },
+	},
+	formatting = {
+		fields = { "menu", "abbr", "kind" },
+		format = function(entry, item)
+			local icons = {
+				nvim_lsp = "l",
+				luasnip = "s",
+			}
+			item.menu = icons[entry.source.name]
+			return item
+		end,
+	},
+	window = {
+		documentation = cmp.config.window.bordered(),
 	},
 })

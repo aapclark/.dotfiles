@@ -1,2 +1,0 @@
--- Theme
-require("onenord").setup()

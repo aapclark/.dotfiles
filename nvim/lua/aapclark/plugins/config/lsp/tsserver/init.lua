@@ -1,7 +1,6 @@
 local lsp = require("lspconfig")
 local rd = lsp.util.root_pattern("package.json", "tsconfig.json")
 local vt = require("virtualtypes")
--- local find_package_json_ancestor = lsp.util.find_package_json_ancestor
 
 local M = {}
 

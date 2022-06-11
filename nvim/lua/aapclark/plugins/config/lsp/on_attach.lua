@@ -3,18 +3,6 @@ local attach_server_with = require("aapclark.utils").attach_server_with
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(clients)
-			-- filter out clients that you don't want to use
-			return vim.tbl_filter(function(client)
-				return client.name ~= "tsserver"
-			end, clients)
-		end,
-		bufnr = bufnr,
-	})
-end
-
 local M = {}
 
 local on_attach = function(client, bufnr)
@@ -24,9 +12,8 @@ local on_attach = function(client, bufnr)
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				buffer = bufnr,
-				-- on 0.8, you should use vim.lsp.buf.format instead
 				callback = function()
-					lsp_formatting(bufnr)
+					vim.lsp.buf.format({ bufnr = bufnr })
 				end,
 			})
 		end
@@ -38,7 +25,7 @@ local on_attach = function(client, bufnr)
 	vim.cmd([[
         augroup HoverDiagnostics
             au!
-            au CursorHold <buffer> lua vim.diagnostic.open_float({ focusable = false })
+            au CursorHold <buffer> lua vim.diagnostic.open_float({ focusable = false, border = 'single' })
         augroup END
     ]])
 

@@ -19,7 +19,8 @@ utils.nnoremap("<leader>tv", ":vnew | :te<cr>")
 
 -- LSP
 utils.snnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-utils.snnoremap("gf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+utils.snnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+utils.snnoremap("gf", "<cmd>lua vim.lsp.buf.format()<CR>")
 utils.snnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 utils.snnoremap("gm", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 utils.snnoremap("gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
