@@ -15,3 +15,6 @@ prompt=
 image_size=0
 display_generic=true
 location=center
+key_up=Control_L-p
+key_down=Control_L-n
+key_expand=Control_L-e

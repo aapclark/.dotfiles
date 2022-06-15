@@ -1,4 +1,5 @@
 hide_search=true
+hide_search=true
 hide_scroll=true
 show=dmenu
 width=100
@@ -6,3 +7,6 @@ lines=4
 location=top_right
 x=-120
 y=10
+key_up=Control_L-p
+key_down=Control_L-n
+key_expand=Control_L-e

@@ -1,4 +1,4 @@
-@import "../.config/colors/kanagawa.css";
+@import "/home/aapclark/.config/colors/kanagawa.css";
 
 * {
   font-family: SF Mono Powerline Light;
@@ -10,14 +10,6 @@ window {
   background: @sumiInk1;
 }
 
-#input {
-  margin-bottom: 15px;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 2px solid @katanaGray;
-  background: @sumiInk2;
-  color: @oldWhite;
-}
 
 #outer-box {
   margin: 5px;
