@@ -1,31 +1,4 @@
-/*
-Nord Theme
-*/
-
-@define-color p1 #2E3440;
-@define-color p2 #3B4252;
-@define-color p3 #434C5E;
-@define-color p4 #4C566A;
-
-@define-color s1 #D8DEE9;
-@define-color s2 #E5E9F0;
-@define-color s3 #ECEFF4;
-
-@define-color n1 #8FBCBB;
-@define-color n2 #88C0D0;
-@define-color n3 #81A1C1;
-@define-color n4 #5E81AC;
-
-@define-color a1 #BF616A;
-@define-color a2 #D08770;
-@define-color a3 #EBCB8B;
-@define-color a4 #A3BE8C;
-@define-color a5 #B48EAD;
-
-@define-color f1 #8FBCBB;
-@define-color f2 #88C0D0;
-@define-color f3 #81A1C1;
-@define-color f4 #5E81AC;
+@import "../.config/colors/kanagawa.css";
 
 * {
   font-family: SF Mono Powerline Light;
@@ -33,43 +6,52 @@ Nord Theme
 }
 
 window {
-  border: 4px double @p4;
-  background: @p1;
+  border: 10px double @katanaGray;
+  background: @sumiInk1;
+}
+
+#input {
+  margin-bottom: 15px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid @katanaGray;
+  background: @sumiInk2;
+  color: @oldWhite;
 }
 
 #outer-box {
   margin: 5px;
   padding: 15px;
-  background-color: @p1;
+  background-color: @sumiInk1;
 }
 
 #entry {
+  color: @oldWhite;
   background-color: none;
   border: none;
   highlight: none;
-  color: @f1;
 }
 
 #entry:selected {
-  color: @f1;
+  color: @oldWhite;
   margin: auto;
   width: 100%;
   border: none;
-  background: @p4;
+  background: @sumiInk3;
   highlight: none;
 }
 
 #img:selected {
-  background: @p4;
-  color: @p4;
+  background: @sumiInk3;
+  color: @waveAqua1;
 }
 
 #text {
   padding: 5px;
-  color: @s1;
+  color: @oldWhite;
 }
 
 #text:selected {
-  color: @f1;
-  background-color: @p4;
+  color: @oldWhite;
+  background-color: @sumiInk3;
 }

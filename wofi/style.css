@@ -1,4 +1,4 @@
-@import "../colors/kanagawa.css";
+@import "../.config/colors/kanagawa.css";
 
 * {
   font-family: SF Mono Powerline Light;
