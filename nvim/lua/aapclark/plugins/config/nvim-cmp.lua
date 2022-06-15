@@ -46,14 +46,15 @@ cmp.setup({
 		fields = { "menu", "abbr", "kind" },
 		format = function(entry, item)
 			local icons = {
-				nvim_lsp = "l",
-				luasnip = "s",
+				nvim_lsp = "lsp",
+				luasnip = "snp",
 			}
 			item.menu = icons[entry.source.name]
 			return item
 		end,
 	},
 	window = {
-		documentation = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
 	},
 })

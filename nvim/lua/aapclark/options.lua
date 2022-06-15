@@ -14,6 +14,8 @@ vim.cmd("filetype plugin indent on")
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.path = vim.o.path .. "**"
 
+vim.cmd("set cmdheight=0")
+
 -- Global
 oopt("swapfile", false)
 oopt("termguicolors", true)
