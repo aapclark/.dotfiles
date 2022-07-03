@@ -22,6 +22,11 @@ input 1578:16642:MOSART_Semi._2.4G_Wireless_Mouse {
       natural_scroll enabled
 }
 
+input 20547:7851:Ploopy_Corporation_Trackball_Mini {
+      pointer_accel -.40
+      natural_scroll enabled
+}
+
 # Read `man 5 sway-input` for more information about this section.
 input type:keyboard {
       xkb_layout "us"
