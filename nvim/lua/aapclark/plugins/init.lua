@@ -1,12 +1,13 @@
 local config = require("aapclark.utils").config
 
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	packer_bootstrap =
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 end
 
-require('packer').startup(function(use)
+require("packer").startup(function(use)
 	require("packer").init({
 		git = {
 			clone_timeout = false,
@@ -42,7 +43,7 @@ require('packer').startup(function(use)
 			{ "nvim-telescope/telescope-file-browser.nvim" },
 		},
 	})
-  use("strash/everybody-wants-that-line.nvim")
+	use("strash/everybody-wants-that-line.nvim")
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -54,17 +55,12 @@ require('packer').startup(function(use)
 	use("windwp/nvim-autopairs")
 	use("lukas-reineke/indent-blankline.nvim")
 	use({
-		"unisonweb/unison",
-		branch = "trunk",
-		rtp = "editor-support/vim",
-	})
-	use({
 		"lewis6991/gitsigns.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
 	})
-	use({ "zah/nim.vim" })
+	use({ "alaviss/nim.nvim" })
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = {
@@ -75,13 +71,7 @@ require('packer').startup(function(use)
 	})
 	use("mvllow/modes.nvim")
 	use({ "ellisonleao/glow.nvim", branch = "main" })
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
 end)
-
-
 
 config("kanagawa")
 config("treesitter")
@@ -93,6 +83,5 @@ config("gitsigns")
 config("indent-blankline")
 config("alpha-nvim")
 config("trouble")
--- config("lualine")
 config("modes")
 config("that-line")
