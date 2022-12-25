@@ -1,7 +1,7 @@
 @import "/home/aapclark/.config/colors/kanagawa.css";
 
 * {
-  font-family: SF Mono Powerline Light;
+  font-family: Input Mono Condensed Light;
   font-size: 12px;
 }
 
@@ -9,7 +9,6 @@ window {
   border: 10px double @katanaGray;
   background: @sumiInk1;
 }
-
 
 #outer-box {
   margin: 5px;

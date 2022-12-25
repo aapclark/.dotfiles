@@ -1,6 +1,5 @@
 @import "../colors/kanagawa.css";
 
-
 /* -----------------------------------------------------------------------------
  * Base styles
  * -------------------------------------------------------------------------- */
@@ -18,7 +17,7 @@
 #waybar {
   color: @oldWhite;
   background-color: @sumiInk3;
-  font-family: SF Mono Powerline Light;
+  font-family: Input Mono Condensed Light;
   font-size: 11.5px;
   opacity: 0.95;
 }
