@@ -1,5 +1,3 @@
-local lspPath = require("lspconfig.util").path
-
 local M = {}
 
 local function map(mode, input, output, options)
@@ -105,30 +103,16 @@ function _G.smart_enter()
 end
 
 M.config = function(name)
-  return require(string.format("aapclark.plugins.config.%s", name))
+  return require(string.format("aapclark.plugins.%s", name))
 end
 
 M.attach_server_with = function(on_attach, capabilities)
   return function(server)
     M.config("lsp." .. server).setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
+        on_attach = on_attach,
+        capabilities = capabilities,
     })
   end
-end
-
-M.hasFile = function(path, filename)
-  local checkPath = lspPath.join(path, filename)
-  local exists = lspPath.exists(checkPath)
-  return exists
-end
-
-M.hasPackageJson = function(path)
-  return M.hasFile(path, "package.json")
-end
-
-M.hasDenoJson = function(path)
-  return M.hasFile(path, "deno.json")
 end
 
 return M
