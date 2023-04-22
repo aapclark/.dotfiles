@@ -5,6 +5,7 @@ require("modes").setup({
 		insert = "#8FBCBB",
 		visual = "#5E81AC",
 	},
-	line_opacity = 0.2,
+	line_opacity = 0.15,
 	set_cursor = true,
+	ignore_filetypes = { "TelescopPrompt" },
 })

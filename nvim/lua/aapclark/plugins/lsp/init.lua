@@ -111,9 +111,11 @@ lspconfig.nimls.setup({
 	on_attach = on_attach,
 })
 
--- lspconfig.prismals.setup({})
+lspconfig.prismals.setup({
+	on_attach = on_attach,
+})
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
 	on_attach = on_attach,
 	settings = {
 		Lua = {
@@ -145,18 +147,12 @@ null_ls.setup({
 		b.diagnostics.luacheck.with({
 			extra_args = { "--global vim" },
 		}),
-		-- Shell
 		b.formatting.shfmt,
 		b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
-		-- Dockerfile
 		b.diagnostics.hadolint,
-		-- Prisma
 		b.formatting.prismaFmt,
-		-- Deno
 		b.diagnostics.yamllint,
-		-- Go Linter Aggregator
 		b.diagnostics.golangci_lint,
-		-- Protobuf
 		b.diagnostics.buf,
 
 		null_ls.builtins.code_actions.eslint_d.with({ condition = has_eslintrc }),

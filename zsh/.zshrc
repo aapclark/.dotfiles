@@ -5,6 +5,7 @@ plugins=(git autojump fzf kubectl)
 # AutoJump
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
+fpath=(~/.zsh/completion $fpath)
 autoload -U compinit && compinit -u
 
 # Common environment variables
@@ -21,8 +22,10 @@ export PATH=~/.cargo/bin:$PATH
 export PATH=~/.local/share/coursier/bin:$PATH
 export DENO_INSTALL=/home/aapclark/.deno
 export PATH=$DENO_INSTALL/bin:$PATH
-export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH";
 export PATH=~/packages/alacritty/target/release:$PATH
+export PATH=$PATH:$HOME/bin
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -31,7 +34,6 @@ export PATH=~/packages/alacritty/target/release:$PATH
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
-alias gv=$HOME/go/bin/g
 
 source $HOME/.config/broot/launcher/bash/br
 
@@ -41,5 +43,5 @@ export GPG_TTY=$(tty)
 eval "$(starship init zsh)"
 source $ZSH/oh-my-zsh.sh
 
-[[ -s "/home/aapclark/.gvm/scripts/gvm" ]] && source "/home/aapclark/.gvm/scripts/gvm"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+export PATH="/home/aapclark/.gvm/go/bin:$PATH"

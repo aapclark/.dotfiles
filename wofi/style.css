@@ -1,12 +1,12 @@
 @import "/home/aapclark/.config/colors/kanagawa.css";
 
 * {
-  font-family: Input Mono Condensed Light;
+  font-family: Leauge Mono Narrow;
   font-size: 12px;
 }
 
 window {
-  border: 10px double @katanaGray;
+  border: 10px double @sumiInk0;
   background: @sumiInk1;
 }
 
@@ -14,7 +14,7 @@ window {
   margin-bottom: 15px;
   padding: 0.5rem;
   border-radius: 5px;
-  border: 2px solid @katanaGray;
+  border: 2px solid @sumiInk0;
   background: @sumiInk2;
   color: @oldWhite;
 }
@@ -37,12 +37,12 @@ window {
   margin: auto;
   width: 100%;
   border: none;
-  background: @sumiInk3;
+  background: @sumiInk2;
   highlight: none;
 }
 
 #img:selected {
-  background: @sumiInk3;
+  background: @sumiInk2;
   color: @waveAqua1;
 }
 
@@ -53,5 +53,5 @@ window {
 
 #text:selected {
   color: @oldWhite;
-  background-color: @sumiInk3;
+  background-color: @sumiInk2;
 }

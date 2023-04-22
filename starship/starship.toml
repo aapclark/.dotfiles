@@ -3,7 +3,7 @@ add_newline = true
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
-success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+success_symbol = "[|-](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -14,15 +14,15 @@ style_user = "white"
 style_root = "black"
 format = "[$user]($style) "
 disabled = false
-show_always = true
+show_always = false
 
 [directory]
 truncation_length = 20
 truncation_symbol = "…/"
 
 [git_branch]
-format = "[$branch](purple) "
-truncation_length = 14
+format = "[$branch](yellow) "
+truncation_length = 28
 truncation_symbol = "…"
 
 [git_status]

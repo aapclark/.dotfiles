@@ -12,6 +12,15 @@
   output eDP-1 disable
   output DP-4 mode 3440x1440@60Hz position 0,0
 }
+{
+  output eDP-1 disable
+  output DP-1 mode 1920x1080@60Hz position 220,1440
+  output DP-4 mode 3440x1440@60Hz position 0,0
+  exec swaymsg workspace 1, move workspace to DP-1
+  exec swaymsg workspace 2, move workspace to DP-1
+  exec swaymsg workspace 3, move workspace to DP-4
+  exec swaymsg workspace 4, move workspace to DP-4
+}
 
  {
   output eDP-1 disable

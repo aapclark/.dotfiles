@@ -4,10 +4,11 @@
   "height": 30,
 
  	"modules-left": [
-    "custom/launcher",
     "sway/workspaces",
-    "sway/mode",
 	],
+  "modules-center": [
+    "sway/mode"
+  ],
 
   "modules-right": [
     "memory",

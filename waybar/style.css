@@ -41,7 +41,7 @@
 }
 
 #clock {
-  color: @waveAqua2;
+  color: @dragonBlue;
 }
 
 /* -----------------------------------------------------------------------------
@@ -49,7 +49,7 @@
  * -------------------------------------------------------------------------- */
 
 #battery {
-  color: @waveAqua2;
+  color: @dragonBlue;
 }
 
 #battery.warning {
@@ -61,7 +61,7 @@
 }
 
 #cpu {
-  color: @waveAqua2;
+  color: @dragonBlue;
 }
 
 #cpu.warning {
@@ -73,7 +73,7 @@
 }
 
 #memory {
-  color: @waveAqua2;
+  color: @dragonBlue;
 }
 
 #memory.warning {
@@ -93,7 +93,7 @@
 
 #network,
 #tray {
-  color: @waveAqua2;
+  color: @dragonBlue;
 }
 
 #network.disconnected {
@@ -101,7 +101,7 @@
 }
 
 #pulseaudio {
-  color: @waveAqua2;
+  color: @dragonBlue;
   padding-top: 6px;
 }
 #pulseaudio.muted {
@@ -113,11 +113,11 @@
 }
 
 #workspaces {
-  color: @waveAqua2;
+  color: @dragonBlue;
 }
 
 #workspaces button {
-  color: @waveAqua2;
+  color: @dragonBlue;
   border-bottom: 3px solid transparent;
   padding: 0 0.15rem;
 }
@@ -134,7 +134,7 @@
 }
 
 #custom-power {
-  color: @waveAqua2;
+  color: @dragonBlue;
   margin-left: 0.5rem;
   padding: 0 1rem;
   font-size: 15px;

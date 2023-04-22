@@ -5,22 +5,22 @@ env:
 
 # Font Config
 font:
-  size: 10
+  size: 10.5
   normal:
-    family: Input Mono Condensed
+    family: League Mono Narrow
     style: Light
   bold:
-    family: Input Mono Condensed
-    style: Regular
+    family: League Mono Narrow
+    style: SemiBold
   italic:
-    family: Input Mono Condensed
-    style: Light Italic
+    family: League Mono Narrow
+    style: Ultra Light
   draw_bold_text_with_bright_colors: true
 
 # Colors (Kanagawa)
 colors:
   primary:
-    background: "0x1f1f28"
+    background: "0x191920"
     foreground: "0xdcd7ba"
   normal:
     black: "0x1f1f28"
@@ -34,7 +34,7 @@ colors:
     white: "0xc8c093"
   bright:
     black: "0x1f1f28"
-    black: "0x363646"
+    # black: "0x363646"
     # black: "0x727169"
     red: "0xe82424"
     green: "0x98bb6c"
