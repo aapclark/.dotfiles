@@ -49,16 +49,12 @@ colors:
   indexed_colors:
     - { index: 16, color: "0xffa066" }
     - { index: 17, color: "0xff5d62" }
-
 window:
   padding:
     dynamic_padding: true
   background_opacity: 1.0
-
 mouse:
   hide_when_typing: true
-
 cursor:
   hide_when_typing: true
-
 live_config_reload: true

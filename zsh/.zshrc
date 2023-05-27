@@ -46,3 +46,5 @@ source $HOME/tacen/scripts/env.sh
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export PATH="/home/aapclark/.gvm/go/bin:$PATH"
+export PATH="$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$PATH"
+export GOROOT="$HOME/.gobrew/current/go"
