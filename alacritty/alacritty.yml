@@ -5,7 +5,7 @@ env:
 
 # Font Config
 font:
-  size: 10.5
+  size: 10
   normal:
     family: League Mono Narrow
     style: Light

@@ -15,10 +15,11 @@
 
 /* The whole bar */
 #waybar {
-  color: @oldWhite;
-  background-color: @sumiInk3;
-  font-family: Input Mono Condensed Light;
-  font-size: 11.5px;
+  color: @fujiWhite;
+  background-color: @sumiInk1;
+  border-bottom: 1px solid @sumiInk2;
+  font-family: League Mono Narrow;
+  font-size: 12.5px;
   opacity: 0.95;
 }
 
@@ -41,7 +42,7 @@
 }
 
 #clock {
-  color: @dragonBlue;
+  color: @oldWhite;
 }
 
 /* -----------------------------------------------------------------------------
@@ -49,7 +50,7 @@
  * -------------------------------------------------------------------------- */
 
 #battery {
-  color: @dragonBlue;
+  color: @oldWhite;
 }
 
 #battery.warning {
@@ -61,7 +62,7 @@
 }
 
 #cpu {
-  color: @dragonBlue;
+  color: @oldWhite;
 }
 
 #cpu.warning {
@@ -73,7 +74,7 @@
 }
 
 #memory {
-  color: @dragonBlue;
+  color: @oldWhite;
 }
 
 #memory.warning {
@@ -85,15 +86,15 @@
 }
 
 #mode {
-  background: @crystalBlue;
-  border-bottom: 3px transparent;
-  color: @oldWhite;
+  background: @oldWhite;
+  /* border-bottom: 3pr transparent; */
+  color: @fujiGray;
   margin-left: 5px;
 }
 
 #network,
 #tray {
-  color: @dragonBlue;
+  color: @oldWhite;
 }
 
 #network.disconnected {
@@ -101,7 +102,7 @@
 }
 
 #pulseaudio {
-  color: @dragonBlue;
+  color: @oldWhite;
   padding-top: 6px;
 }
 #pulseaudio.muted {
@@ -113,19 +114,18 @@
 }
 
 #workspaces {
-  color: @dragonBlue;
+  color: @oldWhite;
 }
 
 #workspaces button {
-  color: @dragonBlue;
-  border-bottom: 3px solid transparent;
+  color: @fujiWhite;
+  /* border-bottom: 3px solid transparent; */
   padding: 0 0.15rem;
 }
 
 #workspaces button.focused {
-  color: @waveBlue2;
-  background: @waveAqua1;
-  color: @waveBlue1;
+  background: @winterGreen;
+  color: @oldWhite;
 }
 
 #workspaces button.urgent {
@@ -134,7 +134,7 @@
 }
 
 #custom-power {
-  color: @dragonBlue;
+  color: @oldWhite;
   margin-left: 0.5rem;
   padding: 0 1rem;
   font-size: 15px;
