@@ -1,0 +1,67 @@
+live_config_reload = true
+
+[[colors.indexed_colors]]
+color = "0xffa066"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xff5d62"
+index = 17
+
+[colors.bright]
+black = "0x1f1f28"
+blue = "0x7fb4ca"
+cyan = "0x7aa89f"
+green = "0x98bb6c"
+magenta = "0x938aa9"
+red = "0xe82424"
+white = "0xdcd7ba"
+yellow = "0xe6c384"
+
+[colors.normal]
+black = "0x1f1f28"
+blue = "0x7e9cd8"
+cyan = "0x6a9589"
+green = "0x76946a"
+magenta = "0x957fb8"
+red = "0xc34043"
+white = "0xc8c093"
+yellow = "0xc0a36e"
+
+[colors.primary]
+background = "0x191920"
+foreground = "0xdcd7ba"
+
+[colors.selection]
+background = "0x2d4f67"
+foreground = "0xc8c093"
+
+[cursor]
+# hide_when_typing = true
+
+[env]
+LANG = "en_US.UTF-8"
+LC_ALL = "en_US.UTF-8"
+TERM = "xterm-256color"
+
+[font]
+size = 10
+
+[font.bold]
+family = "League Mono Narrow"
+style = "SemiBold"
+
+[font.italic]
+family = "League Mono Narrow"
+style = "Ultra Light"
+
+[font.normal]
+family = "League Mono Narrow"
+style = "Light"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+
+[window.padding]
