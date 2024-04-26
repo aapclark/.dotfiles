@@ -11,5 +11,3 @@ require("nvim-autopairs").setup({
 		hightlight = "Search",
 	},
 })
-
-vim.api.nvim_set_keymap("i", "<CR>", "v:lua.MPairs.autopairs_cr()", { expr = true, noremap = true })

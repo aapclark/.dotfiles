@@ -34,6 +34,7 @@ export PATH=$PATH:$HOME/bin
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
+alias z=zellij
 
 source $HOME/.config/broot/launcher/bash/br
 
@@ -48,3 +49,4 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 export PATH="/home/aapclark/.gvm/go/bin:$PATH"
 export PATH="$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$PATH"
 export GOROOT="$HOME/.gobrew/current/go"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

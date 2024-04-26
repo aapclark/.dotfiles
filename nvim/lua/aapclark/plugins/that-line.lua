@@ -1,3 +1,7 @@
 local tl = require("everybody-wants-that-line")
 
-tl.setup()
+tl.setup({
+  filename = {
+    enabled = false
+  }
+})

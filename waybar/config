@@ -81,9 +81,9 @@
   "format-muted": "muted",
   "format-source": "{volume}% v",
   "format-source-muted": "muted",
-  "on-click": "pavucontrol",
-  "on-scroll-up": "pamixer -ui 1",
-  "on-scroll-down": "pamixer -ud 1",
+  "on-click": "alacritty -e pulsemixer",
+  "on-scroll-up": "pulsemixer --change-volume +1",
+  "on-scroll-down": "pulsemixer --change-volume -1",
 },
 
 "tray": {

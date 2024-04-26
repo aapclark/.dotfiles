@@ -1,6 +1,6 @@
 local fmtgroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local lspconfig = require("lspconfig")
-local null_ls = require("null-ls")
+local none_ls = require("null-ls")
 
 local on_attach = function(client, bufnr)
 	diagnostics_format = "[#{c}] #{m} (#{s})", vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -116,6 +116,10 @@ lspconfig.nimls.setup({
 	on_attach = on_attach,
 })
 
+lspconfig.zls.setup({
+	on_attach = on_attach,
+})
+
 lspconfig.prismals.setup({
 	on_attach = on_attach,
 })
@@ -144,8 +148,8 @@ local function has_eslintrc(utils)
 	return utils.root_has_file(".eslintrc.js")
 end
 
-local b = null_ls.builtins
-null_ls.setup({
+-- local b = none_ls.builtins
+--[[ none_ls.setup({
 	sources = {
 		-- Lua
 		b.formatting.stylua,
@@ -160,15 +164,15 @@ null_ls.setup({
 		b.diagnostics.golangci_lint,
 		b.diagnostics.buf,
 
-		null_ls.builtins.code_actions.eslint_d.with({ condition = has_eslintrc }),
-		null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslintrc }),
-		null_ls.builtins.formatting.eslint_d.with({ condition = has_eslintrc }),
+		none_ls.builtins.code_actions.eslint_d.with({ condition = has_eslintrc }),
+		none_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslintrc }),
+		none_ls.builtins.formatting.eslint_d.with({ condition = has_eslintrc }),
 
 		b.formatting.prettierd.with({
 			condition = function()
-				local eslintd_enabled = #null_ls.get_source({
+				local eslintd_enabled = #none_ls.get_source({
 					name = "eslint_d",
-					method = null_ls.methods.FORMATTING,
+					method = none_ls.methods.FORMATTING,
 				})
 				return eslintd_enabled == 0
 			end,
@@ -187,4 +191,4 @@ null_ls.setup({
 		}),
 	},
 	on_attach = on_attach,
-})
+}) ]]

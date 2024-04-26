@@ -29,22 +29,24 @@ local plugins = {
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "L3MON4D3/LuaSnip" },
 	{ "nvim-telescope/telescope.nvim" },
-	{ "nvim-lua/popup.nvim" },
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
 	{ "nvim-telescope/telescope-dap.nvim" },
 	{ "nvim-telescope/telescope-file-browser.nvim" },
 	{ "strash/everybody-wants-that-line.nvim" },
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter",           build = ":TSUpdate" },
 	{ "nvim-treesitter/playground" },
 	{ "goolord/alpha-nvim" },
 	{ "windwp/nvim-autopairs" },
-	-- { "lukas-reineke/indent-blankline.nvim" },
 	{ "nmac427/guess-indent.nvim" },
 	{ "lewis6991/gitsigns.nvim" },
 	{ "nvim-lua/plenary.nvim" },
-	{ "jose-elias-alvarez/null-ls.nvim" },
+	{ "nvimtools/none-ls.nvim" },
 	{ "neovim/nvim-lspconfig" },
-	{ "jose-elias-alvarez/nvim-lsp-ts-utils" },
+	-- { "jose-elias-alvarez/nvim-lsp-ts-utils" },
+  {
+    'stevearc/conform.nvim',
+    opts = {},
+  },
 	{ "mvllow/modes.nvim" },
 	{ "ellisonleao/glow.nvim" },
 	{
@@ -52,6 +54,19 @@ local plugins = {
 		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 	},
 	{ "williamboman/mason-lspconfig.nvim" },
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true,
+	},
+	{
+		"rest-nvim/rest.nvim",
+		ft = "http",
+		dependencies = { "luarocks.nvim" },
+		config = function()
+			require("rest-nvim").setup()
+		end,
+	}
 }
 
 require("lazy").setup(plugins)
@@ -64,9 +79,10 @@ config("nvim-cmp")
 config("telescope")
 config("autopairs")
 config("gitsigns")
--- config("indent-blankline")
 config("guess-indent")
 config("alpha-nvim")
 config("trouble")
 config("modes")
 config("that-line")
+config("rest")
+config("lsp.conform")

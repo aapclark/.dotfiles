@@ -24,8 +24,8 @@ for_window [shell="xdg_shell"] title_format "%title (%app_id)"
 for_window [shell="x_wayland"] title_format "%class - %title"
 
 # class                 border  bground text    indicator child_border
-client.focused          #223249 #6272A4 #F8F8F2 #223249   #223249
-client.focused_inactive #DCA561 #44475A #F8F8F2 #44475A   #44475A
+client.focused          #223249 #6272A4 #F8F8F2 #1F1F28   #223249
+client.focused_inactive #1F1F28 #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #16161D #16161D #BFBFBF #16161D   #16161D
 client.urgent           #C34043 #FF5555 #F8F8F2 #FF5555   #EBCB8B
 client.placeholder      #16161D #16161D #F8F8F2 #16161D   #16161D

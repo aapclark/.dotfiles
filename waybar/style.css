@@ -16,8 +16,8 @@
 /* The whole bar */
 #waybar {
   color: @fujiWhite;
-  background-color: @sumiInk1;
-  border-bottom: 1px solid @sumiInk2;
+  background-color: @sumiInk0;
+  border-bottom: 2px solid @sumiInk1;
   font-family: League Mono Narrow;
   font-size: 12.5px;
   opacity: 0.95;
@@ -88,7 +88,7 @@
 #mode {
   background: @oldWhite;
   /* border-bottom: 3pr transparent; */
-  color: @fujiGray;
+  color: @winterBlue;
   margin-left: 5px;
 }
 
@@ -105,6 +105,7 @@
   color: @oldWhite;
   padding-top: 6px;
 }
+
 #pulseaudio.muted {
   color: @fujiGray;
 }
@@ -118,13 +119,13 @@
 }
 
 #workspaces button {
-  color: @fujiWhite;
+  color: @oldWhite;
   /* border-bottom: 3px solid transparent; */
   padding: 0 0.15rem;
 }
 
 #workspaces button.focused {
-  background: @winterGreen;
+  background: @sumiInk2;
   color: @oldWhite;
 }
 
@@ -139,6 +140,7 @@
   padding: 0 1rem;
   font-size: 15px;
 }
+
 #custom-launcher {
   font-size: 15px;
   margin-left: 15px;

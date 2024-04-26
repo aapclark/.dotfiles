@@ -32,7 +32,7 @@ input type:keyboard {
       xkb_layout "us"
       xkb_options caps:ctrl_modifier
       repeat_delay 300
-      repeat_rate 75
+      repeat_rate 80
 }
 
 exec_always {

@@ -12,3 +12,19 @@ cmd([[autocmd TermOpen * startinsert]])
 
 -- Trim hanging whitespace
 cmd([[au BufWritePre * %s/\s\+$//e]])
+
+
+vim.api.nvim_create_augroup('custom', { clear = true })
+-- Start Terminal In Insert Mode
+vim.api.nvim_create_autocmd('TermOpen', {
+	group = 'custom',
+	pattern = '*',
+	command = 'startinsert | set winfixheight'
+})
+
+-- Highlight Yanks
+vim.api.nvim_create_autocmd('TextYankPost', {
+	group = 'custom',
+	pattern = '*',
+	callback = function() vim.highlight.on_yank { timeout = 200 } end
+})
