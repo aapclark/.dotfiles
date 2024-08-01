@@ -1,13 +1,5 @@
-# Config for sway
-#
-# Read `man 5 sway` for a complete reference.
-
 exec "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway"
 exec "dbus-update-activation-environment --systemd --all "
 exec "dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=sway "
 
-# user config directory
 include $HOME/.config/sway/config.d/*
-
-# only enable this if every app you use is compatible with wayland
-# xwayland disable
