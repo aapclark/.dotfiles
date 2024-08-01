@@ -43,7 +43,6 @@ export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
 source $ZSH/oh-my-zsh.sh
-source $HOME/tacen/scripts/env.sh
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export PATH="/home/aapclark/.gvm/go/bin:$PATH"
