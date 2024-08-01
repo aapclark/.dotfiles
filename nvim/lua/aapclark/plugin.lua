@@ -20,7 +20,43 @@ local plugins = {
 	{ "b3nj5m1n/kommentary" },
 	{ "nvim-lua/lsp-status.nvim" },
 	{ "neovim/nvim-lspconfig" },
-	{ "folke/trouble.nvim" },
+	{
+		"folke/trouble.nvim",
+
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>tr",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>ts",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>tl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>tL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>tQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+	},
 	{ "jubnzv/virtual-types.nvim" },
 	{ "bfredl/nvim-luadev" },
 	{ "hrsh7th/nvim-cmp" },
@@ -32,7 +68,6 @@ local plugins = {
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
 	{ "nvim-telescope/telescope-dap.nvim" },
 	{ "nvim-telescope/telescope-file-browser.nvim" },
-	{ "strash/everybody-wants-that-line.nvim" },
 	{ "nvim-treesitter/nvim-treesitter",           build = ":TSUpdate" },
 	{ "nvim-treesitter/playground" },
 	{ "goolord/alpha-nvim" },
@@ -42,11 +77,10 @@ local plugins = {
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvimtools/none-ls.nvim" },
 	{ "neovim/nvim-lspconfig" },
-	-- { "jose-elias-alvarez/nvim-lsp-ts-utils" },
-  {
-    'stevearc/conform.nvim',
-    opts = {},
-  },
+	{
+		"stevearc/conform.nvim",
+		opts = {},
+	},
 	{ "mvllow/modes.nvim" },
 	{ "ellisonleao/glow.nvim" },
 	{
@@ -60,18 +94,26 @@ local plugins = {
 		config = true,
 	},
 	{
-		"rest-nvim/rest.nvim",
-		ft = "http",
-		dependencies = { "luarocks.nvim" },
-		config = function()
-			require("rest-nvim").setup()
-		end,
-	}
+		"jesseleite/nvim-noirbuddy",
+		dependencies = {
+			{ "tjdevries/colorbuddy.nvim" },
+		},
+		lazy = false,
+		priority = 1000,
+		opts = {
+			preset = "slate",
+			-- All of your `setup(opts)` will go here
+		},
+	},
+	{ "echasnovski/mini.statusline",      version = false },
 }
 
 require("lazy").setup(plugins)
+require("mini.statusline").setup({
+	use_icons = false,
+})
 
-config("kanagawa")
+-- config("kanagawa")
 config("treesitter")
 config("lsp")
 config("lsp.mason")
@@ -83,6 +125,6 @@ config("guess-indent")
 config("alpha-nvim")
 config("trouble")
 config("modes")
-config("that-line")
-config("rest")
+-- config("that-line")
+-- config("rest")
 config("lsp.conform")

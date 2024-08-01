@@ -105,9 +105,10 @@ lspconfig.gopls.setup({
 	settings = {
 		gopls = {
 			analyses = {
-				unusedparams = false,
+				unusedparams = true,
 			},
 			staticcheck = true,
+			gofumpt = true,
 		},
 	},
 })

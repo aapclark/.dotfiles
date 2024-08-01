@@ -32,7 +32,6 @@ utils.nnoremap("<leader>fi", [[<cmd>lua require'telescope.builtin'.live_grep()<C
 utils.nnoremap("<leader>gst", [[<cmd>lua require'telescope.builtin'.git_status()<CR>]])
 utils.nnoremap("<leader>bb", [[<cmd>lua require'telescope.builtin'.buffers()<CR>]])
 utils.nnoremap("<leader>fb", [[<cmd>lua require'telescope'.extensions.file_browser.file_browser()<CR>]])
-utils.nnoremap("<leader>tr", [[<cmd>TroubleToggle<CR>]])
 
 -- completion
 utils.iexnoremap("<Enter>", [[v:lua.smart_enter()]])
