@@ -1,23 +1,23 @@
-font=Leauge Mono Narrow Light 10
+font=Leauge Mono Narrow Light 10.5
 
-background-color=#3B4252
-text-color=#D8DEE9
-width=315
-height=200
+background-color=#1F1F28
+text-color=#C8C093
+width=280
+height=220
 padding=10
 margin=10
-progress-color=over #eceff480
-icon-path=/usr/share/icons/Arc-X-D
-max-icon-size=70
+icons=0
 layer=overlay
-
-border-size=5
-border-radius=0
-border-color=#5294e2
+border-size=1
 
 default-timeout=5000
-
-[urgency=high]
-
 ignore-timeout=1
 
+[urgency=low]
+border-color=#363646
+
+[urgency=normal]
+border-color=#363646
+
+[urgency=high]
+border-color=#43242B
