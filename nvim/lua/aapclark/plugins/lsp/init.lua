@@ -62,8 +62,8 @@ end
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "[d", vim.diagnostic.get_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.get_next, opts)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -149,15 +149,14 @@ local function has_eslintrc(utils)
 	return utils.root_has_file(".eslintrc.js")
 end
 
--- local b = none_ls.builtins
---[[ none_ls.setup({
+--[[ local b = none_ls.builtins
+none_ls.setup({
 	sources = {
 		-- Lua
 		b.formatting.stylua,
 		b.diagnostics.luacheck.with({
 			extra_args = { "--global vim" },
 		}),
-		b.formatting.shfmt,
 		b.diagnostics.shellcheck.with({ diagnostics_format = "#{m} [#{c}]" }),
 		b.diagnostics.hadolint,
 		b.formatting.prismaFmt,
