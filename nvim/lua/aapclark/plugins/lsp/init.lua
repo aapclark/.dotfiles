@@ -80,7 +80,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.h
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
 	on_attach = on_attach,
 })
 
