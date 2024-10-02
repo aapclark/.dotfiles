@@ -24,7 +24,7 @@ export DENO_INSTALL=/home/aapclark/.deno
 export PATH=$DENO_INSTALL/bin:$PATH
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH";
-export PATH=~/packages/alacritty/target/release:$PATH
+export PATH=~/packages:$PATH
 export PATH=$PATH:$HOME/bin
 
 # FZF
@@ -35,6 +35,7 @@ export PATH=$PATH:$HOME/bin
 
 alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
 alias z=zellij
+alias n=nvim
 
 source $HOME/.config/broot/launcher/bash/br
 
