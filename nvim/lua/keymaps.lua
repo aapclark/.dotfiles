@@ -1,4 +1,4 @@
-local utils = require("aapclark.utils")
+local utils = require(".utils")
 
 -- terminal escape
 utils.tnoremap("<ESC>", [[<C-\><C-n>]])

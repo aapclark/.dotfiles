@@ -103,16 +103,7 @@ function _G.smart_enter()
 end
 
 M.config = function(name)
-  return require(string.format("aapclark.plugins.%s", name))
-end
-
-M.attach_server_with = function(on_attach, capabilities)
-  return function(server)
-    M.config("lsp." .. server).setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-    })
-  end
+  return require(string.format("plugins.%s", name))
 end
 
 return M
