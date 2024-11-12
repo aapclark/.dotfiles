@@ -1,18 +1,20 @@
 #!/bin/bash
 
+XDG_SCREENSHOTS_DIR="~/Pictures/Screenshots"
+
 entries="Active Screen Output Area Window"
 
-selected=$(printf '%s\n' $entries | wofi --style=$HOME/.config/wofi/style.css --conf=$HOME/.config/wofi/config.screenshot | awk '{print tolower($1)}')
+selected=$(printf '%s\n' $entries | fuzzel -d --lines=4 | awk '{print tolower($1)}')
 
 case $selected in
   active)
-    /usr/share/sway/scripts/grimshot --notify save active;;
+    grimshot save output --notify ;;
   screen)
-    /usr/share/sway/scripts/grimshot --notify save screen;;
+    grimshot save output --notify ;;
   output)
-    /usr/share/sway/scripts/grimshot --notify save output;;
+    grimshot save output --notify ;;
   area)
-    /usr/share/sway/scripts/grimshot --notify save area;;
+    grimshot save area --notify ;;
   window)
-    /usr/share/sway/scripts/grimshot --notify save window;;
+    grimshot save active --notify ;;
 esac

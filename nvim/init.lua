@@ -1,4 +1,4 @@
-require("aapclark.options")
-require("aapclark.keybindings")
-require("aapclark.commands")
-require("aapclark.plugin")
+require("core")
+require("plugins")
+require("keymaps")
+require("lsp")

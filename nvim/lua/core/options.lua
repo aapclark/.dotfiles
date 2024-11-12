@@ -1,5 +1,5 @@
 local g = vim.g
-local utils = require("aapclark.utils")
+local utils = require(".utils")
 local oopt = utils.oopt
 local wopt = utils.wopt
 local bopt = utils.bopt
