@@ -1,5 +1,5 @@
 return {
-  { "catppuccin/nvim",          name = "catppuccin", priority = 1000, lazy = true },
+  { "catppuccin/nvim",       name = "catppuccin", priority = 1000, lazy = true },
   {
     "ibhagwan/fzf-lua",
     lazy = true,
@@ -8,9 +8,15 @@ return {
       require("fzf-lua").setup({})
     end,
   },
-  { "b3nj5m1n/kommentary",      lazy = true },
-  { "nvim-lua/lsp-status.nvim", lazy = true },
-  { "neovim/nvim-lspconfig",    lazy = true },
+  {
+    "b3nj5m1n/kommentary",
+    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+  },
+  {
+    "nvim-lua/lsp-status.nvim",
+    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+  },
+  { "neovim/nvim-lspconfig", lazy = true },
   {
     "folke/trouble.nvim",
     lazy = true,
@@ -48,29 +54,37 @@ return {
       },
     },
   },
-  { "jubnzv/virtual-types.nvim",                  lazy = true },
+  -- { "jubnzv/virtual-types.nvim", lazy = true },
   { "bfredl/nvim-luadev",                         lazy = true },
-  { "hrsh7th/nvim-cmp",                           lazy = true },
-  { "hrsh7th/cmp-buffer",                         lazy = true },
-  { "hrsh7th/cmp-nvim-lsp",                       lazy = true },
+  {
+    "hrsh7th/nvim-cmp",
+    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+  },
+  {
+    "hrsh7th/cmp-buffer",
+    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+  },
+  {
+    "hrsh7th/cmp-nvim-lsp",
+    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+  },
   { "saadparwaiz1/cmp_luasnip",                   lazy = true },
   { "L3MON4D3/LuaSnip",                           lazy = true },
-  { "nvim-telescope/telescope.nvim",              lazy = true },
-  { "nvim-telescope/telescope-fzy-native.nvim",   lazy = true },
-  { "nvim-telescope/telescope-dap.nvim",          lazy = true },
-  { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+  { "nvim-telescope/telescope.nvim",              lazy = false },
+  { "nvim-telescope/telescope-fzy-native.nvim",   lazy = false },
+  -- { "nvim-telescope/telescope-dap.nvim",          lazy = true },
+  { "nvim-telescope/telescope-file-browser.nvim", lazy = false },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
   },
-  { "goolord/alpha-nvim",        lazy = true },
+  { "goolord/alpha-nvim" },
   { "windwp/nvim-autopairs",     lazy = true },
   { "nmac427/guess-indent.nvim", lazy = true },
   { "lewis6991/gitsigns.nvim",   lazy = true },
   { "nvim-lua/plenary.nvim",     lazy = true },
-  { "nvimtools/none-ls.nvim",    lazy = true },
-  { "neovim/nvim-lspconfig",     lazy = true },
+  { "neovim/nvim-lspconfig" },
   {
     "stevearc/conform.nvim",
     lazy = true,
