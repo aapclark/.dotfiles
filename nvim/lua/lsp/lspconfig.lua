@@ -86,6 +86,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+lspconfig.ts_ls.setup({
+	filetypes = {
+		"javascript",
+		"typescript",
+	},
+})
+
 lspconfig.rust_analyzer.setup({
 	settings = {
 		["rust-analyzer"] = {
