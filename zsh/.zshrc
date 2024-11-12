@@ -1,4 +1,3 @@
-
 # Plugins
 plugins=(git autojump fzf kubectl)
 
