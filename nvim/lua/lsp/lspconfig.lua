@@ -52,7 +52,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			{ mode = "n", lhs = "<space>rn", rhs = vim.lsp.buf.rename },
 			{ mode = "n", lhs = "<space>ca", rhs = vim.lsp.buf.code_action },
 			{ mode = "n", lhs = "K",         rhs = vim.lsp.buf.hover },
-			{ mode = "n", lhs = "<c-k>",     rhs = vim.lsp.buf.hover },
 			{ mode = "n", lhs = "gd",        rhs = vim.lsp.buf.definition },
 			{ mode = "n", lhs = "gD",        rhs = vim.lsp.buf.declaration },
 			{ mode = "n", lhs = "gr",        rhs = vim.lsp.buf.references },
@@ -61,9 +60,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client.supports_method("textDocument/implementation") then
 			local gi = { mode = "n", lhs = "gi", rhs = vim.lsp.buf.implementation }
 			table.insert(kms, gi)
-		end
-		if client.supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 		end
 		if client.supports_method("textDocument/formatting") then
 			local af = {
