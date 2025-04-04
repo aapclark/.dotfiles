@@ -1,0 +1,11 @@
+# external
+config-file = themes/catppuccin-latte.conf
+
+font-size = 10.5
+font-family-bold = "League Mono Narrow SemiBold"
+font-family-italic = "League Mono Narrow Ultra Light"
+font-family = "League Mono Narrow Light"
+
+cursor-style = block
+
+mouse-hide-while-typing= true

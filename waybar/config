@@ -18,6 +18,7 @@
     "clock",
     "tray",
     "custom/power",
+    "custom/network"
   ],
 
 "battery": {
@@ -44,13 +45,13 @@
       "warning": 70,
       "critical": 90,
     },
-    "on-click": "alacritty -e 'htop'",
+    "on-click": "ghostty -e 'htop'",
 },
 
 "memory": {
   "interval": 5,
   "format": "{}% m",
-  "on-click": "alacritty -e 'htop'",
+  "on-click": "ghostty -e 'htop'",
   "states": {
         "warning": 70,
         "critical": 90
@@ -81,7 +82,7 @@
   "format-muted": "muted",
   "format-source": "{volume}% v",
   "format-source-muted": "muted",
-  "on-click": "alacritty -e pulsemixer",
+  "on-click": "ghostty -e pulsemixer",
   "on-scroll-up": "pulsemixer --change-volume +1",
   "on-scroll-down": "pulsemixer --change-volume -1",
 },
