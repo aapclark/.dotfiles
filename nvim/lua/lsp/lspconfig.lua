@@ -51,11 +51,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local kms = {
 			{ mode = "n", lhs = "<space>rn", rhs = vim.lsp.buf.rename },
 			{ mode = "n", lhs = "<space>ca", rhs = vim.lsp.buf.code_action },
-			{ mode = "n", lhs = "K",         rhs = vim.lsp.buf.hover },
-			{ mode = "n", lhs = "gd",        rhs = vim.lsp.buf.definition },
-			{ mode = "n", lhs = "gD",        rhs = vim.lsp.buf.declaration },
-			{ mode = "n", lhs = "gr",        rhs = vim.lsp.buf.references },
-			{ mode = "n", lhs = "gt",        rhs = vim.lsp.buf.type_definition },
+			{ mode = "n", lhs = "K", rhs = vim.lsp.buf.hover },
+			{ mode = "n", lhs = "gd", rhs = vim.lsp.buf.definition },
+			{ mode = "n", lhs = "gD", rhs = vim.lsp.buf.declaration },
+			{ mode = "n", lhs = "gr", rhs = vim.lsp.buf.references },
+			{ mode = "n", lhs = "gt", rhs = vim.lsp.buf.type_definition },
 		}
 		if client.supports_method("textDocument/implementation") then
 			local gi = { mode = "n", lhs = "gi", rhs = vim.lsp.buf.implementation }
@@ -71,12 +71,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			}
 			table.insert(kms, af)
 			-- Format the current buffer on save
-			vim.api.nvim_create_autocmd("BufWritePre", {
+			-- TODO: fix this / handle cases where formatter config is absent
+			--[[ vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = args.buf,
 				callback = function()
 					vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
 				end,
-			})
+			}) ]]
 		end
 		apply_keymaps_with_opts(kms, { noremap = true, silent = true, buffer = args.buf })
 	end,
@@ -86,7 +87,14 @@ lspconfig.ts_ls.setup({
 	filetypes = {
 		"javascript",
 		"typescript",
+		"javascriptreact",
+		"typescriptreact",
 	},
+})
+
+lspconfig.eslint.setup({
+	filetypes = { "javascript", "typescript" },
+	root_dir = lspconfig.util.find_git_ancestor,
 })
 
 lspconfig.rust_analyzer.setup({
@@ -112,6 +120,8 @@ lspconfig.gopls.setup({
 	},
 })
 
+lspconfig.golangci_lint_ls.setup({})
+
 lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
@@ -130,3 +140,6 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
+
+lspconfig.sqlls.setup({})
+lspconfig.graphql.setup({})
