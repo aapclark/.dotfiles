@@ -84,7 +84,6 @@ return {
   { "nmac427/guess-indent.nvim", lazy = true },
   { "lewis6991/gitsigns.nvim",   lazy = true },
   { "nvim-lua/plenary.nvim",     lazy = true },
-  { "neovim/nvim-lspconfig" },
   {
     "stevearc/conform.nvim",
     lazy = true,
@@ -105,4 +104,13 @@ return {
     config = true,
   },
   { "echasnovski/mini.statusline",       version = false, lazy = true },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {}
+  },
 }

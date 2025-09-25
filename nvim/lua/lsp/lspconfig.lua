@@ -51,11 +51,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local kms = {
 			{ mode = "n", lhs = "<space>rn", rhs = vim.lsp.buf.rename },
 			{ mode = "n", lhs = "<space>ca", rhs = vim.lsp.buf.code_action },
-			{ mode = "n", lhs = "K", rhs = vim.lsp.buf.hover },
-			{ mode = "n", lhs = "gd", rhs = vim.lsp.buf.definition },
-			{ mode = "n", lhs = "gD", rhs = vim.lsp.buf.declaration },
-			{ mode = "n", lhs = "gr", rhs = vim.lsp.buf.references },
-			{ mode = "n", lhs = "gt", rhs = vim.lsp.buf.type_definition },
+			{ mode = "n", lhs = "K",         rhs = vim.lsp.buf.hover },
+			{ mode = "n", lhs = "gd",        rhs = vim.lsp.buf.definition },
+			{ mode = "n", lhs = "gD",        rhs = vim.lsp.buf.declaration },
+			{ mode = "n", lhs = "gr",        rhs = vim.lsp.buf.references },
+			{ mode = "n", lhs = "gt",        rhs = vim.lsp.buf.type_definition },
 		}
 		if client.supports_method("textDocument/implementation") then
 			local gi = { mode = "n", lhs = "gi", rhs = vim.lsp.buf.implementation }
@@ -71,13 +71,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			}
 			table.insert(kms, af)
 			-- Format the current buffer on save
-			-- TODO: fix this / handle cases where formatter config is absent
-			--[[ vim.api.nvim_create_autocmd("BufWritePre", {
+			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = args.buf,
 				callback = function()
 					vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
 				end,
-			}) ]]
+			})
 		end
 		apply_keymaps_with_opts(kms, { noremap = true, silent = true, buffer = args.buf })
 	end,
@@ -92,9 +91,44 @@ lspconfig.ts_ls.setup({
 	},
 })
 
+local function has_eslint_config(path)
+	local eslint_configs = {
+		".eslintrc.js",
+		".eslintrc.cjs",
+		".eslintrc.json",
+		".eslintrc.yml",
+		".eslintrc.yaml",
+		"eslint.config.js",
+		"eslint.config.mjs",
+		"eslint.config.cjs",
+	}
+
+	for _, config in ipairs(eslint_configs) do
+		if vim.fn.filereadable(path .. "/" .. config) == 1 then
+			return true
+		end
+	end
+
+	local package_json = path .. "/package.json"
+	if vim.fn.filereadable(package_json) == 1 then
+		local ok, package_data = pcall(vim.fn.json_decode, vim.fn.readfile(package_json))
+		if ok and package_data and package_data.eslintConfig then
+			return true
+		end
+	end
+
+	return false
+end
+
 lspconfig.eslint.setup({
 	filetypes = { "javascript", "typescript" },
-	root_dir = lspconfig.util.find_git_ancestor,
+	root_dir = function(fname)
+		local root = lspconfig.util.find_git_ancestor(fname)
+		if root and has_eslint_config(root) then
+			return root
+		end
+		return nil
+	end,
 })
 
 lspconfig.rust_analyzer.setup({
@@ -109,6 +143,7 @@ lspconfig.rust_analyzer.setup({
 
 lspconfig.gopls.setup({
 	cmd = { "gopls", "--remote=auto" },
+	root_dir = require("lspconfig.util").root_pattern("go.mod", "go.work", ".git"),
 	settings = {
 		gopls = {
 			analyses = {
