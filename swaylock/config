@@ -1,0 +1,34 @@
+# ~/.config/swaylock/config
+
+# Background color
+color=000000
+
+# Ring colors
+ring-color=ffffff
+ring-ver-color=aaaaaa
+ring-wrong-color=666666
+
+# Inside indicator
+inside-color=000000
+inside-ver-color=000000
+inside-wrong-color=000000
+
+# Line (between inside & ring)
+line-color=ffffff
+line-ver-color=aaaaaa
+line-wrong-color=666666
+
+# Text colors
+text-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=ffffff
+text-clear-color=ffffff
+text-caps-lock-color=ffffff
+
+# Misc
+separator-color=ffffff
+font=monospace
+font-size=18
+show-failed-attempts
+disable-caps-lock-text
+

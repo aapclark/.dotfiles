@@ -6,9 +6,15 @@ selected=$(printf '%s\n' $entries | fuzzel -d --lines=4 | awk '{print tolower($1
 
 case $selected in
   logout)
-    swaymsg exit;;
+    session_id=$(loginctl show-user "$USER" -p Display --value)
+    if [ -n "$session_id" ]; then
+      loginctl terminate-session "$session_id"
+    else
+      swaymsg exit
+    fi
+    ;;
   suspend)
-    exec systemctl suspend;;
+    systemctl suspend;;
   reboot)
     exec systemctl reboot;;
   shutdown)
