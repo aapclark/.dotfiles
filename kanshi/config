@@ -3,6 +3,16 @@ profile desk {
   output DP-4 mode 3440x1440@60Hz
 }
 
+profile desk {
+  output eDP-1 disable
+  output DP-5 mode 3440x1440@60Hz
+}
+
 profile mobile {
   output eDP-1 enable mode 1920x1080@60Hz
+}
+
+profile m {
+  output eDP-1 enable mode 1920x1080@60Hz
+  output HDMI-A-1 mode 4096x2160@60Hz
 }
