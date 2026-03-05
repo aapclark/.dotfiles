@@ -1,98 +1,149 @@
-local lspconfig = require("lspconfig")
-local _border = "single"
 local _max_width = 80
 
--- Shoutout to `lewis6991` https://github.com/neovim/neovim/pull/31031#issuecomment-2452229172
-local function with(f, config)
-	return function(c)
-		return f(vim.tbl_deep_extend("force", config, c or {}))
-	end
-end
+-- Global border for all floating windows (0.11+).
+vim.o.winborder = "single"
 
-local function apply_keymaps_with_opts(keymaps, opts)
-	for _, mapping in ipairs(keymaps) do
-		vim.keymap.set(mapping.mode, mapping.lhs, mapping.rhs, opts)
-	end
-end
+-- ---------------------------------------------------------------------------
+-- Diagnostics
+-- ---------------------------------------------------------------------------
 
-local function setup_diagnostics()
-	vim.diagnostic.config({
-		virtual_text = true,
-		severity_sort = true,
-		underline = true,
-		float = {
-			border = _border,
-			focusable = false,
-			source = true,
-			max_width = _max_width,
-			format = function(diagnostic)
-				return string.format("[%s] %s (%s)", diagnostic.code or "?", diagnostic.message, diagnostic.source)
-			end,
-		},
-	})
-end
-
-local function setup_handlers()
-	vim.lsp.buf.signature_help = with(vim.lsp.buf.signature_help, {
-		border = _border,
-		title_pos = "left",
+vim.diagnostic.config({
+	virtual_text = true,
+	severity_sort = true,
+	underline = true,
+	update_in_insert = false,
+	float = {
+		focusable = false,
+		source = true,
 		max_width = _max_width,
-	})
-	vim.lsp.buf.hover = with(vim.lsp.buf.hover, { border = _border, max_width = _max_width })
-end
+		format = function(diagnostic)
+			return string.format("[%s] %s (%s)", diagnostic.code or "?", diagnostic.message, diagnostic.source)
+		end,
+	},
+})
 
-setup_handlers()
-setup_diagnostics()
+-- ---------------------------------------------------------------------------
+-- Capabilities (broadcast to all servers)
+-- ---------------------------------------------------------------------------
+
+vim.lsp.config("*", {
+	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+})
+
+-- ---------------------------------------------------------------------------
+-- LspAttach: keymaps & format-on-save
+-- ---------------------------------------------------------------------------
+--
+-- Note: Neovim 0.11+ default LSP mappings (already bound, kept here as aliases
+-- or intentionally overridden):
+--   grn  → vim.lsp.buf.rename
+--   gra  → vim.lsp.buf.code_action  (normal + visual)
+--   grr  → vim.lsp.buf.references
+--   gri  → vim.lsp.buf.implementation
+--   gO   → vim.lsp.buf.document_symbol
+--   C-s  → vim.lsp.buf.signature_help  (insert mode, see override below)
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LspAttach", { clear = true }),
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		local kms = {
-			{ mode = "n", lhs = "<space>rn", rhs = vim.lsp.buf.rename },
-			{ mode = "n", lhs = "<space>ca", rhs = vim.lsp.buf.code_action },
-			{ mode = "n", lhs = "K",         rhs = vim.lsp.buf.hover },
-			{ mode = "n", lhs = "gd",        rhs = vim.lsp.buf.definition },
-			{ mode = "n", lhs = "gD",        rhs = vim.lsp.buf.declaration },
-			{ mode = "n", lhs = "gr",        rhs = vim.lsp.buf.references },
-			{ mode = "n", lhs = "gt",        rhs = vim.lsp.buf.type_definition },
-		}
-		if client.supports_method("textDocument/implementation") then
-			local gi = { mode = "n", lhs = "gi", rhs = vim.lsp.buf.implementation }
-			table.insert(kms, gi)
+		if not client then
+			return
 		end
+
+		local opts = { noremap = true, silent = true, buffer = args.buf }
+
+		-- In 0.12, vim.lsp.handlers.signature_help() is deprecated.
+		-- Pass max_width directly at the call site instead of via handler overrides.
+		vim.keymap.set("n", "K", function()
+			vim.lsp.buf.hover({ max_width = _max_width })
+		end, opts)
+		vim.keymap.set({ "i", "n" }, "<C-s>", function()
+			vim.lsp.buf.signature_help({ max_width = _max_width, title_pos = "left" })
+		end, opts)
+
+		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
+
+		if client.supports_method("textDocument/implementation") then
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		end
+
+		-- Disable ts_ls formatting when Biome is present: Biome owns JS/TS formatting.
+		if client.name == "ts_ls" then
+			client.server_capabilities.documentFormattingProvider = false
+		end
+
 		if client.supports_method("textDocument/formatting") then
-			local af = {
-				mode = "n",
-				lhs = "<space>f",
-				rhs = function()
-					vim.lsp.buf.format({ async = true })
-				end,
-			}
-			table.insert(kms, af)
-			-- Format the current buffer on save
+			vim.keymap.set("n", "<space>f", function()
+				vim.lsp.buf.format({ async = true })
+			end, opts)
+		end
+
+		-- Biome: apply fixAll (import sorting, lint auto-fixes) on save.
+		if client.name == "biome" then
 			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = vim.api.nvim_create_augroup("BiomeFixAll", { clear = true }),
 				buffer = args.buf,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+					vim.lsp.buf.code_action({
+						context = { only = { "source.fixAll.biome" }, diagnostics = {} },
+						apply = true,
+					})
 				end,
 			})
 		end
-		apply_keymaps_with_opts(kms, { noremap = true, silent = true, buffer = args.buf })
 	end,
 })
 
-lspconfig.ts_ls.setup({
-	filetypes = {
-		"javascript",
-		"typescript",
-		"javascriptreact",
-		"typescriptreact",
+-- ---------------------------------------------------------------------------
+-- Server configurations
+-- ---------------------------------------------------------------------------
+
+vim.lsp.config("ts_ls", {
+	filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+	root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+	init_options = {
+		preferences = {
+			disableSuggestions = false,
+			includeCompletionsForModuleExports = true,
+			includeCompletionsWithInsertText = true,
+		},
+	},
+	settings = {
+		typescript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+		javascript = {
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
 	},
 })
 
-local function has_eslint_config(path)
-	local eslint_configs = {
+vim.lsp.config("eslint", {
+	cmd = { "eslint_d", "--stdio" },
+	filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+	root_markers = {
 		".eslintrc.js",
 		".eslintrc.cjs",
 		".eslintrc.json",
@@ -101,80 +152,55 @@ local function has_eslint_config(path)
 		"eslint.config.js",
 		"eslint.config.mjs",
 		"eslint.config.cjs",
-	}
-
-	for _, config in ipairs(eslint_configs) do
-		if vim.fn.filereadable(path .. "/" .. config) == 1 then
-			return true
-		end
-	end
-
-	local package_json = path .. "/package.json"
-	if vim.fn.filereadable(package_json) == 1 then
-		local ok, package_data = pcall(vim.fn.json_decode, vim.fn.readfile(package_json))
-		if ok and package_data and package_data.eslintConfig then
-			return true
-		end
-	end
-
-	return false
-end
-
-lspconfig.eslint.setup({
-	filetypes = { "javascript", "typescript" },
-	root_dir = function(fname)
-		local root = lspconfig.util.find_git_ancestor(fname)
-		if root and has_eslint_config(root) then
-			return root
-		end
-		return nil
-	end,
+	},
 })
 
-lspconfig.rust_analyzer.setup({
+vim.lsp.config("rust_analyzer", {
 	settings = {
 		["rust-analyzer"] = {
-			checkOnSave = {
-				command = "clippy",
-			},
+			checkOnSave = { command = "clippy" },
 		},
 	},
 })
 
-lspconfig.gopls.setup({
+vim.lsp.config("gopls", {
 	cmd = { "gopls", "--remote=auto" },
-	root_dir = require("lspconfig.util").root_pattern("go.mod", "go.work", ".git"),
+	root_markers = { "go.mod", "go.work", ".git" },
 	settings = {
 		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
+			analyses = { unusedparams = true },
 			staticcheck = true,
 			gofumpt = true,
 		},
 	},
 })
 
-lspconfig.golangci_lint_ls.setup({})
-
-lspconfig.lua_ls.setup({
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
-			runtime = {
-				version = "LuaJIT",
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
+			runtime = { version = "LuaJIT" },
+			diagnostics = { globals = { "vim" } },
 			workspace = {
 				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
 			},
-			telemetry = {
-				enable = false,
-			},
+			telemetry = { enable = false },
 		},
 	},
 })
 
-lspconfig.sqlls.setup({})
-lspconfig.graphql.setup({})
+-- ---------------------------------------------------------------------------
+-- Enable all servers
+-- ---------------------------------------------------------------------------
+
+vim.lsp.enable({
+	"ts_ls",
+	"eslint",
+	"rust_analyzer",
+	"gopls",
+	"golangci_lint_ls",
+	"lua_ls",
+	"sqlls",
+	"graphql",
+	"biome",
+})

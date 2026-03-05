@@ -1,22 +1,9 @@
 return {
   { "catppuccin/nvim",       name = "catppuccin", priority = 1000, lazy = true },
   {
-    "ibhagwan/fzf-lua",
-    lazy = true,
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
-    end,
-  },
-  {
     "b3nj5m1n/kommentary",
-    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+    event = { "BufReadPost", "BufNewFile" },
   },
-  {
-    "nvim-lua/lsp-status.nvim",
-    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
-  },
-  { "neovim/nvim-lspconfig", lazy = true },
   {
     "folke/trouble.nvim",
     lazy = true,
@@ -54,30 +41,23 @@ return {
       },
     },
   },
-  -- { "jubnzv/virtual-types.nvim", lazy = true },
-  { "bfredl/nvim-luadev",                         lazy = true },
   {
     "hrsh7th/nvim-cmp",
-    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
-  },
-  {
-    "hrsh7th/cmp-buffer",
-    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+    event = { "BufReadPost", "BufNewFile" },
   },
   {
     "hrsh7th/cmp-nvim-lsp",
-    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+    lazy = false,
   },
   { "saadparwaiz1/cmp_luasnip",                   lazy = true },
   { "L3MON4D3/LuaSnip",                           lazy = true },
   { "nvim-telescope/telescope.nvim",              lazy = false },
   { "nvim-telescope/telescope-fzy-native.nvim",   lazy = false },
-  -- { "nvim-telescope/telescope-dap.nvim",          lazy = true },
   { "nvim-telescope/telescope-file-browser.nvim", lazy = false },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" }, -- Load when buffer is opened
+    event = { "BufReadPost", "BufNewFile" },
   },
   { "goolord/alpha-nvim" },
   { "windwp/nvim-autopairs",     lazy = true },
@@ -94,15 +74,9 @@ return {
   {
     "williamboman/mason.nvim",
     lazy = true,
-    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    build = ":MasonUpdate",
   },
   { "williamboman/mason-lspconfig.nvim", lazy = true },
-  {
-    "vhyrro/luarocks.nvim",
-    lazy = true,
-    priority = 1000,
-    config = true,
-  },
   { "echasnovski/mini.statusline",       version = false, lazy = true },
   {
     "folke/which-key.nvim",
