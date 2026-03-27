@@ -73,134 +73,57 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 		end
 
-		-- Disable ts_ls formatting when Biome is present: Biome owns JS/TS formatting.
-		if client.name == "ts_ls" then
-			client.server_capabilities.documentFormattingProvider = false
-		end
-
 		if client.supports_method("textDocument/formatting") then
 			vim.keymap.set("n", "<space>f", function()
 				vim.lsp.buf.format({ async = true })
 			end, opts)
 		end
-
-		-- Biome: apply fixAll (import sorting, lint auto-fixes) on save.
-		if client.name == "biome" then
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = vim.api.nvim_create_augroup("BiomeFixAll", { clear = true }),
-				buffer = args.buf,
-				callback = function()
-					vim.lsp.buf.code_action({
-						context = { only = { "source.fixAll.biome" }, diagnostics = {} },
-						apply = true,
-					})
-				end,
-			})
-		end
 	end,
 })
 
 -- ---------------------------------------------------------------------------
--- Server configurations
+-- Go: organize imports + format on save
 -- ---------------------------------------------------------------------------
 
-vim.lsp.config("ts_ls", {
-	filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-	root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
-	init_options = {
-		preferences = {
-			disableSuggestions = false,
-			includeCompletionsForModuleExports = true,
-			includeCompletionsWithInsertText = true,
-		},
-	},
-	settings = {
-		typescript = {
-			inlayHints = {
-				includeInlayParameterNameHints = "all",
-				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-				includeInlayFunctionParameterTypeHints = true,
-				includeInlayVariableTypeHints = true,
-				includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				includeInlayEnumMemberValueHints = true,
-			},
-		},
-		javascript = {
-			inlayHints = {
-				includeInlayParameterNameHints = "all",
-				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-				includeInlayFunctionParameterTypeHints = true,
-				includeInlayVariableTypeHints = true,
-				includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				includeInlayEnumMemberValueHints = true,
-			},
-		},
-	},
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.go",
+	callback = function(args)
+		local clients = vim.lsp.get_clients({ bufnr = args.buf, name = "gopls" })
+		if #clients == 0 then
+			return
+		end
+		local client = clients[1]
+		local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
+		params.context = { only = { "source.organizeImports" } }
+		local result = vim.lsp.buf_request_sync(args.buf, "textDocument/codeAction", params, 3000)
+		for _, res in pairs(result or {}) do
+			for _, r in pairs(res.result or {}) do
+				if r.edit then
+					vim.lsp.util.apply_workspace_edit(r.edit, client.offset_encoding)
+				end
+			end
+		end
+		vim.lsp.buf.format({ async = false })
+	end,
 })
 
-vim.lsp.config("eslint", {
-	cmd = { "eslint_d", "--stdio" },
-	filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-	root_markers = {
-		".eslintrc.js",
-		".eslintrc.cjs",
-		".eslintrc.json",
-		".eslintrc.yml",
-		".eslintrc.yaml",
-		"eslint.config.js",
-		"eslint.config.mjs",
-		"eslint.config.cjs",
-	},
-})
+-- ---------------------------------------------------------------------------
+-- Inlay hints
+-- ---------------------------------------------------------------------------
 
-vim.lsp.config("rust_analyzer", {
-	settings = {
-		["rust-analyzer"] = {
-			checkOnSave = { command = "clippy" },
-		},
-	},
-})
-
-vim.lsp.config("gopls", {
-	cmd = { "gopls", "--remote=auto" },
-	root_markers = { "go.mod", "go.work", ".git" },
-	settings = {
-		gopls = {
-			analyses = { unusedparams = true },
-			staticcheck = true,
-			gofumpt = true,
-		},
-	},
-})
-
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			runtime = { version = "LuaJIT" },
-			diagnostics = { globals = { "vim" } },
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),
-				checkThirdParty = false,
-			},
-			telemetry = { enable = false },
-		},
-	},
-})
+vim.lsp.inlay_hint.enable(true)
 
 -- ---------------------------------------------------------------------------
 -- Enable all servers
 -- ---------------------------------------------------------------------------
 
 vim.lsp.enable({
-	"ts_ls",
-	"eslint",
-	"rust_analyzer",
 	"gopls",
+	"tsgo",
+	"biome",
 	"golangci_lint_ls",
 	"lua_ls",
+	"rust_analyzer",
 	"sqlls",
 	"graphql",
-	"biome",
 })
