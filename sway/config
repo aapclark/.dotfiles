@@ -1,5 +1,0 @@
-exec "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway"
-exec "dbus-update-activation-environment --systemd --all "
-exec "dbus-update-activation-environment --systemd XDG_CURRENT_DESKTOP=sway "
-
-include $HOME/.config/sway/config.d/*

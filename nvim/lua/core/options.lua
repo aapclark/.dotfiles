@@ -1,49 +1,43 @@
-local g = vim.g
-local utils = require(".utils")
-local oopt = utils.oopt
-local wopt = utils.wopt
-local bopt = utils.bopt
+vim.g.mapleader = " "
 
--- Variables
-g["mapleader"] = " "
-g["netrw_gx"] = "<cWORD>"
-
--- Options
 local indent = 2
-vim.cmd("filetype plugin indent on")
-vim.o.shortmess = vim.o.shortmess .. "c"
+
+-- UI
+vim.o.termguicolors = true
+vim.api.nvim_create_autocmd("UIEnter", {
+	once = true,
+	callback = function()
+		vim.schedule(function() vim.o.cmdheight = 0 end)
+	end,
+})
+vim.o.showmode = false
+vim.o.showtabline = 1
+vim.o.laststatus = 3
+vim.o.showmatch = true
+vim.o.splitbelow = true
+vim.o.shortmess = vim.o.shortmess .. "cI"
+
+-- Editing
+vim.o.swapfile = false
+vim.o.updatetime = 300
+vim.o.clipboard = "unnamedplus"
+vim.o.completeopt = "menuone,noselect"
+vim.o.ignorecase = true
+vim.o.smartcase = true
 vim.o.path = vim.o.path .. "**"
+vim.o.wildignore = ".git,*/node_modules/*,*/target/*,.metals,.bloop"
 
-vim.cmd("set cmdheight=0")
+-- Indentation (vim.opt correctly applies to both global and buffer scope)
+vim.opt.tabstop = indent
+vim.opt.shiftwidth = indent
+vim.opt.softtabstop = indent
+vim.opt.expandtab = true
+vim.opt.fileformat = "unix"
 
--- Global
-oopt("swapfile", false)
-oopt("termguicolors", true)
-oopt("hidden", true)
-oopt("showtabline", 1)
-oopt("updatetime", 300)
-oopt("showmode", false)
-oopt("splitbelow", true)
-oopt("tabstop", 2)
-oopt("showmatch", true)
-oopt("laststatus", 2)
-oopt("wildignore", ".git,*/node_modules/*,*/target/*,.metals,.bloop")
-oopt("ignorecase", true)
-oopt("smartcase", true)
-oopt("clipboard", "unnamed")
-oopt("completeopt", "menuone,noselect")
-oopt("laststatus", 3)
-vim.cmd("highlight WhthSeparator guibg=None")
+-- Window
+vim.opt.wrap = false
+vim.opt.cursorline = true
+vim.opt.signcolumn = "yes"
+vim.opt.number = true
 
--- window-scoped
-wopt("wrap", false)
-wopt("cursorline", true)
-wopt("signcolumn", "yes")
-wopt("number", true)
-
--- buffer-scoped
-bopt("tabstop", indent)
-bopt("shiftwidth", indent)
-bopt("softtabstop", indent)
-bopt("expandtab", true)
-bopt("fileformat", "unix")
+vim.api.nvim_set_hl(0, "WinSeparator", { bg = "None" })

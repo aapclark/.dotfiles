@@ -7,5 +7,5 @@ require("modes").setup({
 	}, ]]
 	line_opacity = 0.15,
 	set_cursor = true,
-	ignore_filetypes = { "TelescopPrompt" },
+	ignore = { "TelescopPrompt" },
 })
