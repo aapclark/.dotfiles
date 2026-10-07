@@ -8,6 +8,6 @@ require("nvim-autopairs").setup({
 		end_key = "$",
 		keys = "qwertyuiopzxcvbnmasdfghjkl",
 		check_comma = true,
-		hightlight = "Search",
+		highlight = "Search",
 	},
 })

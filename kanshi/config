@@ -1,18 +1,13 @@
 profile desk {
   output eDP-1 disable
-  output DP-4 mode 3440x1440@60Hz
-}
-
-profile desk {
-  output eDP-1 disable
-  output DP-5 mode 3440x1440@60Hz
+  output "ASUSTek COMPUTER INC ASUS VG34V LCLMTF055342" mode 3440x1440@99.982
 }
 
 profile mobile {
-  output eDP-1 enable mode 1920x1080@60Hz
+  output eDP-1 enable mode 1920x1200@60Hz scale 1
 }
 
 profile m {
-  output eDP-1 enable mode 1920x1080@60Hz
+  output eDP-1 enable mode 1920x1200@60Hz
   output HDMI-A-1 mode 4096x2160@60Hz
 }

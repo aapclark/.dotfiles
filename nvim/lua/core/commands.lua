@@ -21,35 +21,34 @@ autocmd("FileType", {
 	end,
 })
 
--- JS: highlight column 81
-autocmd("BufEnter", {
+-- JS: mark column 81
+autocmd("FileType", {
 	group = custom,
-	pattern = "*.js",
+	pattern = "javascript",
 	callback = function()
-		vim.fn.matchadd("ColorColumn", "\\%81v", 100)
+		vim.opt_local.colorcolumn = "81"
 	end,
 })
 
--- Prose buffers: wrap, spell, kspell completion
-autocmd({ "BufReadPost", "BufNewFile" }, {
+-- Spell check for prose and markup
+autocmd("FileType", {
 	group = custom,
-	pattern = { "*.md", "*.txt", "COMMIT_EDITMSG" },
+	pattern = { "markdown", "text", "gitcommit", "html", "asciidoc" },
+	callback = function()
+		vim.opt_local.spell = true
+		vim.opt_local.spelllang = "en_us"
+	end,
+})
+
+-- Prose buffers: soft wrap and kspell completion
+autocmd("FileType", {
+	group = custom,
+	pattern = { "markdown", "text", "gitcommit" },
 	callback = function()
 		vim.opt_local.wrap = true
 		vim.opt_local.linebreak = true
 		vim.opt_local.list = false
-		vim.opt_local.spell = true
-		vim.opt_local.spelllang = "en_us"
 		vim.opt_local.complete:append("kspell")
-	end,
-})
-
-autocmd({ "BufReadPost", "BufNewFile" }, {
-	group = custom,
-	pattern = { "*.html", "*.txt", "*.md", "*.adoc" },
-	callback = function()
-		vim.opt_local.spell = true
-		vim.opt_local.spelllang = "en_us"
 	end,
 })
 
@@ -72,13 +71,21 @@ autocmd("TextYankPost", {
 	end,
 })
 
--- Trim trailing whitespace on save, preserving cursor position
+-- Trim trailing whitespace on save, preserving cursor position.
+-- Skipped for markdown, where two trailing spaces are a hard line break.
 autocmd("BufWritePre", {
 	group = custom,
 	pattern = "*",
-	callback = function()
+	callback = function(args)
+		if vim.bo[args.buf].binary or vim.bo[args.buf].filetype == "markdown" then
+			return
+		end
 		local pos = vim.api.nvim_win_get_cursor(0)
-		vim.cmd([[%s/\s\+$//e]])
+		local save = vim.fn.getreg("/")
+		vim.cmd([[keepjumps keeppatterns %s/\s\+$//e]])
+		vim.fn.setreg("/", save)
+		local lines = vim.api.nvim_buf_line_count(args.buf)
+		pos[1] = math.min(pos[1], lines)
 		vim.api.nvim_win_set_cursor(0, pos)
 	end,
 })

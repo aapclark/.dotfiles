@@ -69,11 +69,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
 
-		if client.supports_method("textDocument/implementation") then
+		if client:supports_method("textDocument/implementation") then
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 		end
 
-		if client.supports_method("textDocument/formatting") then
+		if client:supports_method("textDocument/formatting") then
 			vim.keymap.set("n", "<space>f", function()
 				vim.lsp.buf.format({ async = true })
 			end, opts)
@@ -126,4 +126,5 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"sqlls",
 	"graphql",
+	"jsonls",
 })

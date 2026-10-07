@@ -7,7 +7,9 @@ vim.o.termguicolors = true
 vim.api.nvim_create_autocmd("UIEnter", {
 	once = true,
 	callback = function()
-		vim.schedule(function() vim.o.cmdheight = 0 end)
+		vim.schedule(function()
+			vim.o.cmdheight = 0
+		end)
 	end,
 })
 vim.o.showmode = false
@@ -24,7 +26,7 @@ vim.o.clipboard = "unnamedplus"
 vim.o.completeopt = "menuone,noselect"
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.path = vim.o.path .. "**"
+vim.opt.path:append("**")
 vim.o.wildignore = ".git,*/node_modules/*,*/target/*,.metals,.bloop"
 
 -- Indentation (vim.opt correctly applies to both global and buffer scope)
