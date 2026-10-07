@@ -1,0 +1,11 @@
+[tools]
+gh = "latest"
+go = "latest"
+kubectl = "latest"
+"github:1jehuang/jcode" = { version = "v0.90.0", rename_exe = "jcode" }
+"github:grafana/gcx" = "latest"
+"github:gfx-labs/kubie" = "latest"
+node = "24.11.0"
+tree-sitter = "latest"
+"npm:@posthog/cli" = "latest"
+railway = "latest"

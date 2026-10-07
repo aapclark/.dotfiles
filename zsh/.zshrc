@@ -24,7 +24,6 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 alias luamake=$HOME/lua-language-server/3rd/luamake/luamake
 alias zel=zellij
 alias n=nvim
-alias oc=opencode
 source $HOME/.config/broot/launcher/bash/br
 export GPG_TTY=$(tty)
 eval "$(starship init zsh)"
@@ -41,9 +40,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # source ~/.safe-chain/scripts/init-posix.sh # Safe-chain Zsh initialization script
-
-# opencode
-export PATH=/home/aapclark/.opencode/bin:$PATH
 
 # git worktree helper
 worktree() {

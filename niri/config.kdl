@@ -315,6 +315,10 @@ window-rule {
 }
 
 binds {
+    // >>> jcode launch hotkeys (managed) >>>
+    Super+Semicolon hotkey-overlay-title="jcode: trade" { spawn "sh" "-c" "if [ \"$(niri msg -j focused-window 2>/dev/null | jq -r '.app_id // empty' 2>/dev/null)\" = 'jcode-desktop' ]; then exec wtype -M ctrl -M alt -k Return -m alt -m ctrl; fi; if [ -d '/home/aapclark/work/gfx/oku/projects/oku-trade/trade' ]; then cd '/home/aapclark/work/gfx/oku/projects/oku-trade/trade'; else cd \"$HOME\"; fi; exec 'ghostty' '/home/aapclark/.local/share/mise/installs/github-1jehuang-jcode/0.84.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+;'"; }
+    Super+Apostrophe hotkey-overlay-title="jcode: home" { spawn "sh" "-c" "if [ \"$(niri msg -j focused-window 2>/dev/null | jq -r '.app_id // empty' 2>/dev/null)\" = 'jcode-desktop' ]; then exec wtype -M ctrl -k t -m ctrl; fi; if [ -d '/home/aapclark' ]; then cd '/home/aapclark'; else cd \"$HOME\"; fi; exec 'ghostty' '/home/aapclark/.local/share/mise/installs/github-1jehuang-jcode/0.84.0/jcode-linux-x86_64.bin' --spawn-hotkey 'cmd+'\\'''"; }
+    // <<< jcode launch hotkeys (managed) <<<
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
     // like wev.
@@ -561,7 +565,4 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
-    Mod+E hotkey-overlay-title="Cast focused window" {
-        spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg -j focused-window | jq .id)";
-    }
 }
