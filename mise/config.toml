@@ -2,7 +2,7 @@
 gh = "latest"
 go = "latest"
 kubectl = "latest"
-"github:1jehuang/jcode" = { version = "v0.90.0", rename_exe = "jcode" }
+"github:1jehuang/jcode" = { version = "v0.91.0", rename_exe = "jcode" }
 "github:grafana/gcx" = "latest"
 "github:gfx-labs/kubie" = "latest"
 node = "24.11.0"
